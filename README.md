@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+how to build structure.txt
+
+ls -R > structure.txt
+
 In the project directory, you can run:
 
 ### `npm start`

@@ -1,0 +1,42 @@
+.
+├── .gitignore
+├── README.md
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   ├── kumara-parvatha.jpg
+│   │   ├── mangalore_drive_logo.jpg
+│   │   ├── netravathi-peak.jpeg
+│   │   └── thenomadway_logo.jpeg
+│   ├── components
+│   │   ├── AdventurePackages.jsx
+│   │   ├── CallToAction.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   ├── Hero.jsx
+│   │   ├── HeroImage.jsx
+│   │   ├── Rentals.jsx
+│   │   ├── TourPackages.jsx
+│   │   ├── WelcomeMessage.jsx
+│   │   └── ui
+│   │       ├── button.jsx
+│   │       ├── toast.jsx
+│   │       ├── toaster.jsx
+│   │       └── use-toast.js
+│   ├── hooks
+│   │   └── useInView.js
+│   ├── index.css
+│   ├── lib
+│   │   └── utils.js
+│   ├── main.jsx
+│   └── pages
+│       └── PackageDetails.jsx
+├── structure.txt
+├── tailwind.config.js
+└── vite.config.js
+
+8 directories, 32 files
