@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, MessageCircle, Users, Mountain, Church, Car } from 'lucide-react';
+import { ArrowLeft, MessageCircle, Users, Mountain, Church, Car, Shield, User, CheckCircle2, MapPin, Calendar, Clock } from 'lucide-react';
 
 const PackageDetails = () => {
   const { type, id } = useParams();
@@ -14,11 +14,11 @@ const PackageDetails = () => {
     let message = '';
     
     if (type === 'rental') {
-      message = `Hi! I'm interested in renting a ${data.name} (${data.passengers} passengers). Please provide more details.`;
+      message = `Hi! I'm interested in renting a ${data.name} (${data.passengers} passengers). Please provide more details and pricing.`;
     } else if (type === 'adventure') {
-      message = `Hi! I'm interested in the ${data.destination} adventure package (₹${data.price}/person). Please provide more details.`;
+      message = `Hi! I'm interested in the ${data.destination} adventure package. Please provide more details and pricing.`;
     } else if (type === 'tour') {
-      message = `Hi! I'm interested in the ${data.destination} tour package (₹${data.price}/person). Please provide more details.`;
+      message = `Hi! I'm interested in the ${data.destination} tour package. Please provide more details and pricing.`;
     }
 
     const whatsappUrl = `https://wa.me/919663632802?text=${encodeURIComponent(message)}`;
@@ -26,15 +26,23 @@ const PackageDetails = () => {
   };
 
   const getIcon = () => {
-    if (type === 'rental') return <Car size={40} color="#1e40af" />;
-    if (type === 'adventure') return <Mountain size={40} color="#1e40af" />;
-    if (type === 'tour') return <Church size={40} color="#1e40af" />;
+    if (type === 'rental') return <Car size={40} color="#0C516A" />;
+    if (type === 'adventure') return <Mountain size={40} color="#0C516A" />;
+    if (type === 'tour') return <Church size={40} color="#0C516A" />;
   };
 
   const getTitle = () => {
     if (type === 'rental') return data?.name || 'Vehicle Rental';
-    return `Mangaluru - ${data?.destination || 'Package'}`;
+    return `${data?.destination || 'Package'}`;
   };
+
+  // Common facilities for adventure packages
+  const commonFacilities = [
+    { icon: User, text: 'Expert Trekking Guide' },
+    { icon: Shield, text: 'First Aid & Safety Equipment' },
+    { icon: CheckCircle2, text: 'All Forest Permissions' },
+    { icon: CheckCircle2, text: 'Accommodation Facilities' },
+  ];
 
   return (
     <>
@@ -102,21 +110,21 @@ const PackageDetails = () => {
                     height: '100%',
                     objectFit: 'cover'
                   }}
-                 src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
-                {data?.price && (
+                  src={data.image} />
+                {type === 'adventure' && data?.difficulty && (
                   <div style={{
                     position: 'absolute',
                     top: '30px',
                     right: '30px',
-                    backgroundColor: '#1e40af',
+                    backgroundColor: 'rgba(12, 81, 106, 0.95)',
                     color: '#ffffff',
-                    padding: '15px 30px',
-                    borderRadius: '40px',
-                    fontSize: '24px',
+                    padding: '12px 24px',
+                    borderRadius: '30px',
+                    fontSize: '16px',
                     fontWeight: '700',
-                    boxShadow: '0 4px 20px rgba(30, 64, 175, 0.4)'
+                    backdropFilter: 'blur(10px)'
                   }}>
-                    ₹{data.price}/person
+                    {data.difficulty}
                   </div>
                 )}
               </div>
@@ -127,7 +135,7 @@ const PackageDetails = () => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '15px',
-                marginBottom: '30px'
+                marginBottom: '20px'
               }}>
                 {getIcon()}
                 <h1 style={{
@@ -139,17 +147,81 @@ const PackageDetails = () => {
                 </h1>
               </div>
 
+              {type === 'adventure' && data?.specialty && (
+                <div style={{
+                  backgroundColor: '#f0f9ff',
+                  padding: '20px',
+                  borderRadius: '16px',
+                  marginBottom: '30px',
+                  borderLeft: '4px solid #0C516A'
+                }}>
+                  <p style={{
+                    fontSize: '18px',
+                    fontWeight: '700',
+                    color: '#0C516A',
+                    marginBottom: '8px'
+                  }}>
+                    {data.specialty}
+                  </p>
+                  <p style={{
+                    fontSize: '16px',
+                    color: '#334155',
+                    lineHeight: '1.6'
+                  }}>
+                    {data.description}
+                  </p>
+                </div>
+              )}
+
+              {type === 'adventure' && data?.duration && (
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                  gap: '15px',
+                  marginBottom: '30px'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '15px',
+                    backgroundColor: '#fef3c7',
+                    borderRadius: '12px'
+                  }}>
+                    <Clock size={24} color="#92400e" />
+                    <div>
+                      <p style={{ fontSize: '12px', color: '#78350f', marginBottom: '2px' }}>Duration</p>
+                      <p style={{ fontSize: '16px', fontWeight: '600', color: '#92400e' }}>{data.duration}</p>
+                    </div>
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '15px',
+                    backgroundColor: '#dcfce7',
+                    borderRadius: '12px'
+                  }}>
+                    <Calendar size={24} color="#166534" />
+                    <div>
+                      <p style={{ fontSize: '12px', color: '#15803d', marginBottom: '2px' }}>Best Season</p>
+                      <p style={{ fontSize: '16px', fontWeight: '600', color: '#166534' }}>{data.bestSeason}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {type === 'rental' && (
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '15px',
                   padding: '25px',
-                  backgroundColor: '#eff6ff',
+                  backgroundColor: '#e6f2f7',
                   borderRadius: '16px',
                   marginBottom: '40px'
                 }}>
-                  <Users size={32} color="#1e40af" />
+                  <Users size={32} color="#0C516A" />
                   <div>
                     <span style={{
                       fontSize: '14px',
@@ -162,7 +234,7 @@ const PackageDetails = () => {
                     <span style={{
                       fontSize: '24px',
                       fontWeight: '700',
-                      color: '#1e40af'
+                      color: '#0C516A'
                     }}>
                       {data?.passengers} Passengers
                     </span>
@@ -170,7 +242,135 @@ const PackageDetails = () => {
                 </div>
               )}
 
-              {data?.features && (
+              {type === 'adventure' && (
+                <>
+                  <div style={{ marginBottom: '40px' }}>
+                    <h2 style={{
+                      fontSize: '24px',
+                      fontWeight: '700',
+                      color: '#000000',
+                      marginBottom: '20px'
+                    }}>
+                      Package Includes
+                    </h2>
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                      gap: '15px'
+                    }}>
+                      {commonFacilities.map((facility, idx) => {
+                        const IconComponent = facility.icon;
+                        return (
+                          <div key={idx} style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            padding: '15px',
+                            backgroundColor: '#f0fdf4',
+                            borderRadius: '12px',
+                            border: '1px solid #86efac'
+                          }}>
+                            <IconComponent size={20} color="#166534" />
+                            <span style={{
+                              fontSize: '16px',
+                              color: '#166534',
+                              fontWeight: '500'
+                            }}>
+                              {facility.text}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {data?.highlights && (
+                    <div style={{ marginBottom: '40px' }}>
+                      <h2 style={{
+                        fontSize: '24px',
+                        fontWeight: '700',
+                        color: '#000000',
+                        marginBottom: '20px'
+                      }}>
+                        Destination Highlights
+                      </h2>
+                      <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '12px'
+                      }}>
+                        {data.highlights.map((highlight, idx) => (
+                          <div key={idx} style={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: '12px',
+                            padding: '15px',
+                            backgroundColor: '#f8fafc',
+                            borderRadius: '12px',
+                            border: '1px solid #e2e8f0'
+                          }}>
+                            <CheckCircle2 size={20} color="#0C516A" style={{ marginTop: '2px', flexShrink: 0 }} />
+                            <span style={{
+                              fontSize: '16px',
+                              color: '#334155',
+                              lineHeight: '1.6'
+                            }}>
+                              {highlight}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {data?.enroute && data.enroute.length > 0 && (
+                    <div style={{
+                      padding: '25px',
+                      backgroundColor: '#fef3c7',
+                      borderRadius: '16px',
+                      marginBottom: '40px',
+                      border: '2px solid #fbbf24'
+                    }}>
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        marginBottom: '15px'
+                      }}>
+                        <MapPin size={24} color="#92400e" />
+                        <h3 style={{
+                          fontSize: '20px',
+                          fontWeight: '700',
+                          color: '#92400e'
+                        }}>
+                          En-route Attractions
+                        </h3>
+                      </div>
+                      <div style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '10px'
+                      }}>
+                        {data.enroute.map((place, idx) => (
+                          <div key={idx} style={{
+                            padding: '10px 18px',
+                            backgroundColor: '#fef9c3',
+                            borderRadius: '20px',
+                            fontSize: '15px',
+                            color: '#78350f',
+                            fontWeight: '500',
+                            border: '1px solid #fde047'
+                          }}>
+                            {place}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+
+              {data?.features && type !== 'adventure' && (
                 <div style={{ marginBottom: '40px' }}>
                   <h2 style={{
                     fontSize: '24px',
@@ -198,7 +398,7 @@ const PackageDetails = () => {
                         <div style={{
                           width: '8px',
                           height: '8px',
-                          backgroundColor: '#1e40af',
+                          backgroundColor: '#0C516A',
                           borderRadius: '50%'
                         }} />
                         <span style={{
@@ -214,38 +414,20 @@ const PackageDetails = () => {
                 </div>
               )}
 
-              {type === 'adventure' && (
-                <div style={{
-                  padding: '25px',
-                  backgroundColor: '#f0fdf4',
-                  borderRadius: '16px',
-                  marginBottom: '40px',
-                  border: '2px solid #86efac'
-                }}>
-                  <p style={{
-                    fontSize: '16px',
-                    color: '#166534',
-                    lineHeight: '1.6'
-                  }}>
-                    <strong>Additional Benefits:</strong> Guide fees, forest fees, first aid kit, and all trekking essentials included in the package price.
-                  </p>
-                </div>
-              )}
-
               <div style={{
                 padding: '30px',
-                backgroundColor: '#fef3c7',
+                backgroundColor: '#dbeafe',
                 borderRadius: '16px',
                 marginBottom: '40px',
-                border: '2px solid #fbbf24'
+                border: '2px solid #93c5fd'
               }}>
                 <p style={{
                   fontSize: '16px',
-                  color: '#92400e',
+                  color: '#1e40af',
                   lineHeight: '1.6',
                   marginBottom: '10px'
                 }}>
-                  <strong>Note:</strong> {type === 'rental' ? 'Professional driver included with the vehicle. Fuel charges apply as per actual usage.' : 'All prices are per person. Group discounts available for bookings of 10+ people.'}
+                  <strong>Note:</strong> {type === 'rental' ? 'Professional driver included with the vehicle. Fuel charges apply as per actual usage.' : type === 'adventure' ? 'Packages are customizable based on group size and requirements. Meals and accommodation can be arranged as per your preference.' : 'Contact us for detailed pricing and group discounts for bookings of 10+ people.'}
                 </p>
               </div>
 

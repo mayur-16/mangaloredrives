@@ -34,29 +34,25 @@ const TourPackages = () => {
     {
       id: 1,
       destination: 'Thirupathi Temple',
-      price: 2700,
-      image: 'https://images.unsplash.com/photo-1595872018818-97555653a011?q=80&w=1964&auto=format&fit=crop',
+      image: 'src/assets/thirupathi_temple.jpg',
       features: ['1 Night Room Stay', 'Breakfast', 'Lunch', 'Dinner']
     },
     {
       id: 2,
       destination: 'Manthralaya Temple',
-      price: 2600,
-      image: 'https://images.unsplash.com/photo-1629107994193-70582f34e3e3?q=80&w=2070&auto=format&fit=crop',
+      image: 'src/assets/mantralaya.jpg',
       features: ['1 Night Room Stay', 'Breakfast', 'Lunch', 'Dinner']
     },
     {
       id: 3,
       destination: 'Shabarimala Temple',
-      price: 2400,
-      image: 'https://images.unsplash.com/photo-1583109871303-a61626354674?q=80&w=2070&auto=format&fit=crop',
+      image: 'src/assets/shabhari_malai_temple.jpg',
       features: ['1 Night Room Stay', 'Breakfast', 'Lunch', 'Dinner']
     },
     {
       id: 4,
       destination: 'Shirdi Sai Baba Temple',
-      price: 2700,
-      image: 'https://images.unsplash.com/photo-1628178726588-44a6c5391c0e?q=80&w=1964&auto=format&fit=crop',
+      image: 'src/assets/shirdi_temple.jpg',
       features: ['1 Night Room Stay', 'Breakfast', 'Lunch', 'Dinner']
     }
   ];
@@ -149,19 +145,6 @@ const TourPackages = () => {
                     objectFit: 'cover'
                   }}
                 />
-                <div style={{
-                  position: 'absolute',
-                  top: '20px',
-                  right: '20px',
-                  backgroundColor: '#0C516A', /* Updated color */
-                  color: '#ffffff',
-                  padding: '10px 20px',
-                  borderRadius: '30px',
-                  fontSize: '18px',
-                  fontWeight: '700'
-                }}>
-                  ₹{pkg.price}/person
-                </div>
               </div>
 
               <div style={{ padding: '30px' }}>
@@ -171,7 +154,7 @@ const TourPackages = () => {
                   gap: '10px',
                   marginBottom: '15px'
                 }}>
-                  <Church size={24} color="#0C516A" /> {/* Updated color */}
+                  <Church size={24} color="#0C516A" />
                   <h3 style={{
                     fontSize: '24px',
                     fontWeight: '700',
@@ -196,7 +179,7 @@ const TourPackages = () => {
                       <div style={{
                         width: '6px',
                         height: '6px',
-                        backgroundColor: '#0C516A', /* Updated color */
+                        backgroundColor: '#0C516A',
                         borderRadius: '50%'
                       }} />
                       <span style={{ fontSize: '15px', color: '#64748b' }}>{feature}</span>
@@ -211,10 +194,10 @@ const TourPackages = () => {
                   style={{
                     width: '100%',
                     padding: '15px',
-                    backgroundColor: '#0C516A', /* Updated color */
+                    backgroundColor: '#0C516A',
                     color: '#ffffff',
                     border: 'none',
-borderRadius: '12px',
+                    borderRadius: '12px',
                     fontSize: '16px',
                     fontWeight: '600',
                     cursor: 'pointer',
@@ -224,8 +207,8 @@ borderRadius: '12px',
                     gap: '10px',
                     transition: 'background-color 0.3s ease'
                   }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0A4257'} /* Darker shade for hover */
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#0C516A'} /* Updated color */
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0A4257'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = '#0C516A'}
                 >
                   View Details
                   <ArrowRight size={20} />

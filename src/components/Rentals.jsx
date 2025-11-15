@@ -17,10 +17,10 @@ const Rentals = () => {
   }, []);
 
   const vehicles = [
-    { id: 1, name: '5 Seater Car', passengers: 5, icon: '🚗' },
-    { id: 2, name: '7 Seater Car', passengers: 7, icon: '🚙' },
-    { id: 3, name: '8 Seater Car', passengers: 8, icon: '🚐' },
-    { id: 4, name: '15 Seater Tempo Traveller', passengers: 15, icon: '🚌' }
+    { id: 1, name: '5 Seater Car', passengers: 4, icon: 'src/assets/logos/5seatercar.jpg' },
+    { id: 2, name: '7 Seater Car', passengers: 6, icon: 'src/assets/logos/7seatercar.jpg' },
+    { id: 3, name: '8 Seater Car', passengers: 7, icon: 'src/assets/logos/8seatercar.jpg' },
+    { id: 4, name: 'Bus', passengers: 15, icon: 'src/assets/logos/bus.png' }
   ];
 
   const handleEnquire = (vehicle) => {
@@ -97,7 +97,15 @@ const Rentals = () => {
                   marginBottom: '20px'
                 }}
               >
-                {vehicle.icon}
+                <img
+                  alt={`${vehicle.name}`}
+                  src={vehicle.icon}
+                  style={{
+                    width: '120px',
+                    height: '80px',
+                    objectFit: 'cover',
+                  }}
+                />
               </motion.div>
 
               <h3 style={{

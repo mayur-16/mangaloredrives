@@ -58,13 +58,13 @@ const Hero = () => {
         flexDirection: 'column',
         alignItems: isMobile ? 'center' : 'flex-start'
       }}>
-          <img alt="Mangalore Drives modern logo" style={{
+          <img alt="Mangalore Drives logo" style={{
           width: '180px',
           height: 'auto',
           marginBottom: '30px',
           borderRadius: '20px',
           // boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
-        }} src="https://horizons-cdn.hostinger.com/0ad8efd7-7eaf-4e43-9362-605452a45d21/cropped_circle_image-0y5xU.png" />
+        }} src="src/assets/logos/mangalore_drives_logo.png" />
 
           <h1 style={{
           fontSize: isMobile ? '48px' : '56px',

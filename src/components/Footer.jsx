@@ -70,22 +70,6 @@ const Footer = () => {
           </div>
         </div>
 
-        <div>
-          <span style={{
-            fontSize: '18px',
-            fontWeight: '600',
-            marginBottom: '20px',
-            display: 'block'
-          }}>
-            Services
-          </span>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: isMobile ? 'center' : 'flex-start' }}>
-            <span style={{ color: '#94a3b8', fontSize: '15px' }}>Car Rentals</span>
-            <span style={{ color: '#94a3b8', fontSize: '15px' }}>Adventure Packages</span>
-            <span style={{ color: '#94a3b8', fontSize: '15px' }}>Temple Tours</span>
-            <span style={{ color: '#94a3b8', fontSize: '15px' }}>Custom Packages</span>
-          </div>
-        </div>
       </div>
 
       <div style={{
