@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
-import { Mountain, ArrowRight, MapPin } from 'lucide-react';
+import { Mountain, ArrowRight, MapPin, Clock, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const AdventurePackages = () => {
@@ -15,7 +15,7 @@ const AdventurePackages = () => {
     const checkMobile = () => {
         const mobile = window.innerWidth < 768;
         setIsMobile(mobile);
-        if (mobile && carouselRef.current) {
+        if (carouselRef.current) {
             setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
         }
     };
@@ -164,10 +164,11 @@ const AdventurePackages = () => {
           </p>
         </motion.div>
       </div>
+      
       <motion.div 
         ref={carouselRef}
         style={{
-            cursor: isMobile ? 'grab' : 'default',
+            cursor: 'grab',
             overflow: 'hidden',
             paddingLeft: isMobile ? '20px' : '40px',
             paddingRight: isMobile ? '20px' : '40px',
@@ -176,14 +177,14 @@ const AdventurePackages = () => {
         }}
       >
         <motion.div 
-            drag={isMobile ? "x" : false}
+            drag="x"
             dragConstraints={{ right: 0, left: -carouselWidth }}
             style={{
                 display: 'flex',
                 gap: '30px',
                 padding: '20px 5px',
             }}
-            whileTap={{ cursor: isMobile ? 'grabbing' : 'default' }}
+            whileTap={{ cursor: 'grabbing' }}
         >
           {packages.map((pkg, index) => (
             <motion.div
@@ -191,7 +192,7 @@ const AdventurePackages = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ y: isMobile ? 0 : -10 }}
+              whileHover={{ y: -10 }}
               style={{
                 minWidth: isMobile ? '300px' : '350px',
                 backgroundColor: '#ffffff',

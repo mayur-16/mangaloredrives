@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, MessageCircle, Users, Mountain, Church, Car, Shield, User, CheckCircle2, MapPin, Calendar, Clock } from 'lucide-react';
+import { ArrowLeft, MessageCircle, Users, Mountain, Building2, Car, Shield, User, CheckCircle2, MapPin, Calendar, Clock } from 'lucide-react';
 
 const PackageDetails = () => {
   const { type, id } = useParams();
@@ -28,7 +28,7 @@ const PackageDetails = () => {
   const getIcon = () => {
     if (type === 'rental') return <Car size={40} color="#0C516A" />;
     if (type === 'adventure') return <Mountain size={40} color="#0C516A" />;
-    if (type === 'tour') return <Church size={40} color="#0C516A" />;
+    if (type === 'tour') return <Building2 size={40} color="#0C516A" />;
   };
 
   const getTitle = () => {
@@ -36,12 +36,18 @@ const PackageDetails = () => {
     return `${data?.destination || 'Package'}`;
   };
 
-  // Common facilities for adventure packages
   const commonFacilities = [
     { icon: User, text: 'Expert Trekking Guide' },
     { icon: Shield, text: 'First Aid & Safety Equipment' },
     { icon: CheckCircle2, text: 'All Forest Permissions' },
     { icon: CheckCircle2, text: 'Accommodation Facilities' },
+  ];
+
+  const tourFacilities = [
+    { icon: CheckCircle2, text: 'Temple Darshan Arrangements' },
+    { icon: User, text: 'Experienced Guide Support' },
+    { icon: CheckCircle2, text: 'Comfortable Accommodation' },
+    { icon: CheckCircle2, text: 'Traditional Vegetarian Meals' },
   ];
 
   return (
@@ -110,7 +116,7 @@ const PackageDetails = () => {
                     height: '100%',
                     objectFit: 'cover'
                   }}
-                  src={data.image} />
+                  src={`/${data.image}`}/>
                 {type === 'adventure' && data?.difficulty && (
                   <div style={{
                     position: 'absolute',
@@ -173,6 +179,47 @@ const PackageDetails = () => {
                 </div>
               )}
 
+              {type === 'tour' && data?.deity && (
+                <div style={{
+                  backgroundColor: '#fef3c7',
+                  padding: '20px',
+                  borderRadius: '16px',
+                  marginBottom: '30px',
+                  borderLeft: '4px solid #d97706'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    marginBottom: '10px'
+                  }}>
+                    <span style={{ fontSize: '24px' }}>🙏</span>
+                    <p style={{
+                      fontSize: '18px',
+                      fontWeight: '700',
+                      color: '#d97706'
+                    }}>
+                      {data.deity}
+                    </p>
+                  </div>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#92400e',
+                    fontStyle: 'italic',
+                    marginBottom: '10px'
+                  }}>
+                    {data.significance}
+                  </p>
+                  <p style={{
+                    fontSize: '16px',
+                    color: '#334155',
+                    lineHeight: '1.6'
+                  }}>
+                    {data.description}
+                  </p>
+                </div>
+              )}
+
               {type === 'adventure' && data?.duration && (
                 <div style={{
                   display: 'grid',
@@ -206,6 +253,44 @@ const PackageDetails = () => {
                     <div>
                       <p style={{ fontSize: '12px', color: '#15803d', marginBottom: '2px' }}>Best Season</p>
                       <p style={{ fontSize: '16px', fontWeight: '600', color: '#166534' }}>{data.bestSeason}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {type === 'tour' && data?.duration && (
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                  gap: '15px',
+                  marginBottom: '30px'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '15px',
+                    backgroundColor: '#fef3c7',
+                    borderRadius: '12px'
+                  }}>
+                    <Clock size={24} color="#92400e" />
+                    <div>
+                      <p style={{ fontSize: '12px', color: '#78350f', marginBottom: '2px' }}>Duration</p>
+                      <p style={{ fontSize: '16px', fontWeight: '600', color: '#92400e' }}>{data.duration}</p>
+                    </div>
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '15px',
+                    backgroundColor: '#fef9c3',
+                    borderRadius: '12px'
+                  }}>
+                    <Calendar size={24} color="#d97706" />
+                    <div>
+                      <p style={{ fontSize: '12px', color: '#92400e', marginBottom: '2px' }}>Best Season</p>
+                      <p style={{ fontSize: '16px', fontWeight: '600', color: '#d97706' }}>{data.bestSeason}</p>
                     </div>
                   </div>
                 </div>
@@ -382,7 +467,7 @@ const PackageDetails = () => {
                   </h2>
                   <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                     gap: '15px'
                   }}>
                     {data.features.map((feature, idx) => (
@@ -391,23 +476,110 @@ const PackageDetails = () => {
                         alignItems: 'center',
                         gap: '12px',
                         padding: '15px',
-                        backgroundColor: '#f8fafc',
+                        backgroundColor: type === 'tour' ? '#fef9c3' : '#f8fafc',
                         borderRadius: '12px',
-                        border: '1px solid #e2e8f0'
+                        border: type === 'tour' ? '1px solid #fde047' : '1px solid #e2e8f0'
                       }}>
-                        <div style={{
-                          width: '8px',
-                          height: '8px',
-                          backgroundColor: '#0C516A',
-                          borderRadius: '50%'
-                        }} />
+                        <CheckCircle2 size={20} color={type === 'tour' ? '#d97706' : '#0C516A'} />
                         <span style={{
                           fontSize: '16px',
-                          color: '#334155',
+                          color: type === 'tour' ? '#78350f' : '#334155',
                           fontWeight: '500'
                         }}>
                           {feature}
                         </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {type === 'tour' && data?.highlights && (
+                <div style={{ marginBottom: '40px' }}>
+                  <h2 style={{
+                    fontSize: '24px',
+                    fontWeight: '700',
+                    color: '#000000',
+                    marginBottom: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}>
+                    <span style={{ fontSize: '28px' }}>✨</span>
+                    Spiritual Highlights
+                  </h2>
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px'
+                  }}>
+                    {data.highlights.map((highlight, idx) => (
+                      <div key={idx} style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '12px',
+                        padding: '15px',
+                        backgroundColor: '#fefcf3',
+                        borderRadius: '12px',
+                        border: '1px solid #fed7aa'
+                      }}>
+                        <span style={{ fontSize: '18px', flexShrink: 0 }}>🕉️</span>
+                        <span style={{
+                          fontSize: '16px',
+                          color: '#334155',
+                          lineHeight: '1.6'
+                        }}>
+                          {highlight}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {type === 'tour' && data?.enroute && data.enroute.length > 0 && (
+                <div style={{
+                  padding: '25px',
+                  backgroundColor: '#fef3c7',
+                  borderRadius: '16px',
+                  marginBottom: '40px',
+                  border: '2px solid #fbbf24'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    marginBottom: '15px'
+                  }}>
+                    <MapPin size={24} color="#92400e" />
+                    <h3 style={{
+                      fontSize: '20px',
+                      fontWeight: '700',
+                      color: '#92400e'
+                    }}>
+                      Sacred Stops En-route
+                    </h3>
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '10px'
+                  }}>
+                    {data.enroute.map((place, idx) => (
+                      <div key={idx} style={{
+                        padding: '10px 18px',
+                        backgroundColor: '#fef9c3',
+                        borderRadius: '20px',
+                        fontSize: '15px',
+                        color: '#78350f',
+                        fontWeight: '500',
+                        border: '1px solid #fde047',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}>
+                        <span style={{ fontSize: '16px' }}>🛕</span>
+                        {place}
                       </div>
                     ))}
                   </div>

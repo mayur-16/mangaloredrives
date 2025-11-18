@@ -8,10 +8,20 @@
 ├── src
 │   ├── App.jsx
 │   ├── assets
+│   │   ├── kudure-mukha.jpeg
 │   │   ├── kumara-parvatha.jpg
-│   │   ├── mangalore_drive_logo.jpg
+│   │   ├── logos
+│   │   │   ├── 5seatercar.jpg
+│   │   │   ├── 7seatercar.jpg
+│   │   │   ├── 8seatercar.jpg
+│   │   │   ├── bus.png
+│   │   │   └── mangalore_drives_logo.png
+│   │   ├── mantralaya.jpg
 │   │   ├── netravathi-peak.jpeg
-│   │   └── thenomadway_logo.jpeg
+│   │   ├── shabhari_malai_temple.jpg
+│   │   ├── shirdi_temple.jpg
+│   │   ├── thenomadway_logo.jpeg
+│   │   └── thirupathi_temple.jpg
 │   ├── components
 │   │   ├── AdventurePackages.jsx
 │   │   ├── CallToAction.jsx
@@ -39,4 +49,4 @@
 ├── tailwind.config.js
 └── vite.config.js
 
-8 directories, 32 files
+9 directories, 41 files

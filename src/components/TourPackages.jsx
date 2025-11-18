@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
-import { Church, ArrowRight } from 'lucide-react';
+import { Building2, ArrowRight, MapPin, Calendar, Users, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const TourPackages = () => {
@@ -15,7 +15,7 @@ const TourPackages = () => {
     const checkMobile = () => {
         const mobile = window.innerWidth < 768;
         setIsMobile(mobile);
-        if (mobile && carouselRef.current) {
+        if (carouselRef.current) {
             setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
         }
     };
@@ -33,27 +33,83 @@ const TourPackages = () => {
   const packages = [
     {
       id: 1,
-      destination: 'Thirupathi Temple',
+      destination: 'Tirupati Balaji Temple',
       image: 'src/assets/thirupathi_temple.jpg',
-      features: ['1 Night Room Stay', 'Breakfast', 'Lunch', 'Dinner']
+      deity: 'Lord Venkateswara',
+      significance: 'Most visited pilgrimage site in the world',
+      description: 'Seek blessings at the abode of Lord Venkateswara in the sacred Tirumala hills',
+      enroute: ['Kanipakam Vinayaka Temple', 'Sri Kalahasti Temple'],
+      highlights: [
+        'Darshan of Lord Venkateswara at the sanctum sanctorum',
+        'Visit to the seven sacred hills of Tirumala',
+        'Participate in temple rituals and ceremonies',
+        'Experience the divine atmosphere of Tirumala',
+        'Explore ancient temple architecture and history',
+        'Receive the sacred Tirupati Laddu Prasadam'
+      ],
+      features: ['Comfortable AC accommodation', 'Traditional vegetarian meals', 'Temple darshan arrangements', 'Professional guide assistance'],
+      duration: '2 Days / 1 Night',
+      bestSeason: 'September to March'
     },
     {
       id: 2,
-      destination: 'Manthralaya Temple',
+      destination: 'Mantralayam',
       image: 'src/assets/mantralaya.jpg',
-      features: ['1 Night Room Stay', 'Breakfast', 'Lunch', 'Dinner']
+      deity: 'Sri Raghavendra Swamy',
+      significance: 'Holy Brindavanam of Sri Raghavendra Swamy',
+      description: 'Experience divine grace at the sacred Samadhi of Sri Raghavendra Swamy',
+      enroute: ['Alampur Jogulamba Temple', 'Tungabhadra River Ghats'],
+      highlights: [
+        'Darshan at the sacred Brindavanam of Sri Raghavendra',
+        'Attend daily Puja and Abhishekam ceremonies',
+        'Visit Panchamukhi Anjaneya Temple',
+        'Take holy dip in Tungabhadra River',
+        'Explore the meditation caves and sacred places',
+        'Receive blessed Prasadam and holy offerings'
+      ],
+      features: ['Dharamshala accommodation', 'Satvik meals provided', 'Morning & evening darshan', 'Spiritual discourse arrangements'],
+      duration: '2 Days / 1 Night',
+      bestSeason: 'October to February'
     },
     {
       id: 3,
-      destination: 'Shabarimala Temple',
+      destination: 'Sabarimala Temple',
       image: 'src/assets/shabhari_malai_temple.jpg',
-      features: ['1 Night Room Stay', 'Breakfast', 'Lunch', 'Dinner']
+      deity: 'Lord Ayyappa',
+      significance: 'Sacred hilltop shrine of Lord Ayyappa',
+      description: 'Embark on a spiritual journey to the divine abode of Lord Ayyappa',
+      enroute: ['Pamba River', 'Sannidhanam Forest Path'],
+      highlights: [
+        'Trek through sacred forest path to Sannidhanam',
+        'Darshan of Lord Ayyappa at the main shrine',
+        'Visit Makaravilakku viewing point',
+        'Holy bath at Pamba River',
+        'Experience the unique Ayyappa devotional tradition',
+        'Witness the sacred 18 holy steps ascent'
+      ],
+      features: ['Basic accommodation facilities', 'Simple vegetarian meals', 'Guided trekking support', 'Vratham observance assistance'],
+      duration: '2 Days / 1 Night',
+      bestSeason: 'November to January'
     },
     {
       id: 4,
       destination: 'Shirdi Sai Baba Temple',
       image: 'src/assets/shirdi_temple.jpg',
-      features: ['1 Night Room Stay', 'Breakfast', 'Lunch', 'Dinner']
+      deity: 'Sai Baba of Shirdi',
+      significance: 'Sacred Samadhi Mandir of Sai Baba',
+      description: 'Experience the eternal love and blessings of Sai Baba at his holy abode',
+      enroute: ['Shani Shingnapur', 'Trimbakeshwar Temple'],
+      highlights: [
+        'Darshan at the sacred Samadhi Mandir',
+        'Visit Dwarkamai and Chavadi',
+        'Attend the divine Aarti ceremonies',
+        'Experience Sai Baba\'s Kakad and Shej Aarti',
+        'Explore Lendi Garden and other sacred sites',
+        'Receive Udi and blessed Prasadam'
+      ],
+      features: ['Comfortable lodging near temple', 'Meal arrangements included', 'Priority darshan booking', 'Complete temple tour guidance'],
+      duration: '2 Days / 1 Night',
+      bestSeason: 'October to March'
     }
   ];
 
@@ -67,7 +123,7 @@ const TourPackages = () => {
       ref={ref}
       style={{
         padding: isMobile ? '80px 0' : '100px 0',
-        backgroundColor: '#f8fafc',
+        backgroundColor: '#fefcf3',
         overflow: 'hidden'
       }}
     >
@@ -76,8 +132,9 @@ const TourPackages = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '60px' }}
+          style={{ textAlign: 'center', marginBottom: '40px' }}
         >
+        
           <h2 style={{
             fontSize: isMobile ? '36px' : '48px',
             fontWeight: '800',
@@ -88,18 +145,20 @@ const TourPackages = () => {
           </h2>
           <p style={{
             fontSize: '18px',
-            color: '#64748b',
-            maxWidth: '600px',
-            margin: '0 auto'
+            color: '#78350f',
+            maxWidth: '700px',
+            margin: '0 auto',
+            fontStyle: 'italic'
           }}>
-            Spiritual journeys to India's most revered temples with comfortable accommodation and meals
+            "Yatra to sacred shrines with divine darshan, blessed prasadam, and spiritual experiences"
           </p>
         </motion.div>
       </div>
+      
       <motion.div
         ref={carouselRef}
         style={{
-            cursor: isMobile ? 'grab' : 'default',
+            cursor: 'grab',
             overflow: 'hidden',
             paddingLeft: isMobile ? '20px' : '40px',
             paddingRight: isMobile ? '20px' : '40px',
@@ -108,9 +167,9 @@ const TourPackages = () => {
         }}
       >
         <motion.div
-            drag={isMobile ? "x" : false}
+            drag="x"
             dragConstraints={{ right: 0, left: -carouselWidth }}
-            whileTap={{ cursor: isMobile ? 'grabbing' : 'default' }}
+            whileTap={{ cursor: 'grabbing' }}
             style={{
                 display: 'flex',
                 gap: '30px',
@@ -123,14 +182,14 @@ const TourPackages = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ y: isMobile ? 0 : -10 }}
+              whileHover={{ y: -10 }}
               style={{
                 minWidth: isMobile ? '300px' : '350px',
                 backgroundColor: '#ffffff',
                 borderRadius: '20px',
                 overflow: 'hidden',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                border: '2px solid #e2e8f0',
+                boxShadow: '0 4px 20px rgba(217, 119, 6, 0.15)',
+                border: '1px solid #fed7aa',
                 transition: 'all 0.3s ease',
                 pointerEvents: 'auto'
               }}
@@ -145,6 +204,32 @@ const TourPackages = () => {
                     objectFit: 'cover'
                   }}
                 />
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%)'
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  top: '20px',
+                  right: '20px',
+                  backgroundColor: 'rgba(217, 119, 6, 0.95)',
+                  color: '#ffffff',
+                  padding: '8px 16px',
+                  borderRadius: '20px',
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  backdropFilter: 'blur(10px)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}>
+                  <Sparkles size={14} />
+                  Sacred Yatra
+                </div>
               </div>
 
               <div style={{ padding: '30px' }}>
@@ -152,11 +237,11 @@ const TourPackages = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
-                  marginBottom: '15px'
+                  marginBottom: '10px'
                 }}>
-                  <Church size={24} color="#0C516A" />
+                  <Building2 size={24} color="#d97706" />
                   <h3 style={{
-                    fontSize: '24px',
+                    fontSize: '22px',
                     fontWeight: '700',
                     color: '#000000'
                   }}>
@@ -165,26 +250,60 @@ const TourPackages = () => {
                 </div>
 
                 <div style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '10px',
-                  marginBottom: '25px'
+                  backgroundColor: '#fef3c7',
+                  padding: '12px',
+                  borderRadius: '10px',
+                  marginBottom: '12px',
+                  borderLeft: '3px solid #d97706'
                 }}>
-                  {pkg.features.map((feature, idx) => (
-                    <div key={idx} style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}>
-                      <div style={{
-                        width: '6px',
-                        height: '6px',
-                        backgroundColor: '#0C516A',
-                        borderRadius: '50%'
-                      }} />
-                      <span style={{ fontSize: '15px', color: '#64748b' }}>{feature}</span>
-                    </div>
-                  ))}
+                  <p style={{
+                    fontSize: '13px',
+                    fontWeight: '700',
+                    color: '#d97706',
+                    marginBottom: '4px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px'
+                  }}>
+                    🙏 {pkg.deity}
+                  </p>
+                  <p style={{
+                    fontSize: '12px',
+                    color: '#92400e',
+                    lineHeight: '1.4',
+                    fontStyle: 'italic'
+                  }}>
+                    {pkg.significance}
+                  </p>
+                </div>
+
+                <p style={{
+                  fontSize: '14px',
+                  color: '#64748b',
+                  lineHeight: '1.5',
+                  marginBottom: '15px'
+                }}>
+                  {pkg.description}
+                </p>
+
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '8px',
+                  marginBottom: '20px',
+                  padding: '12px',
+                  backgroundColor: '#fef3c7',
+                  borderRadius: '10px',
+                }}>
+                  <MapPin size={16} color="#92400e" style={{ marginTop: '2px', flexShrink: 0 }} />
+                  <div>
+                    <p style={{ fontSize: '12px', fontWeight: '600', color: '#92400e', marginBottom: '4px' }}>
+                      Sacred Stops En-route
+                    </p>
+                    <p style={{ fontSize: '12px', color: '#78350f', lineHeight: '1.4' }}>
+                      {pkg.enroute.join(' • ')}
+                    </p>
+                  </div>
                 </div>
 
                 <motion.button
@@ -194,7 +313,7 @@ const TourPackages = () => {
                   style={{
                     width: '100%',
                     padding: '15px',
-                    backgroundColor: '#0C516A',
+                    backgroundColor: '#d97706',
                     color: '#ffffff',
                     border: 'none',
                     borderRadius: '12px',
@@ -207,8 +326,8 @@ const TourPackages = () => {
                     gap: '10px',
                     transition: 'background-color 0.3s ease'
                   }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0A4257'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#0C516A'}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#b45309'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = '#d97706'}
                 >
                   View Details
                   <ArrowRight size={20} />
