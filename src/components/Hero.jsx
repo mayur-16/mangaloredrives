@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { MapPin, Phone, Mail } from 'lucide-react';
+import logoImage from '@/assets/logos/mangalore_drives_logo.png';
+
 const Hero = () => {
   const [ref, isInView] = useInView({
     threshold: 0.2
@@ -18,7 +20,7 @@ const Hero = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'linear-gradient(135deg, #ADD8E6, #0C516A)', /* Updated gradient */
+    background: 'linear-gradient(135deg, #ADD8E6, #0C516A)',
     padding: isMobile ? '120px 20px 60px' : '100px 40px 60px',
     position: 'relative',
     overflow: 'hidden'
@@ -63,8 +65,7 @@ const Hero = () => {
           height: 'auto',
           marginBottom: '30px',
           borderRadius: '20px',
-          // boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
-        }} src="src/assets/logos/mangalore_drives_logo.png" />
+        }} src={logoImage} />
 
           <h1 style={{
           fontSize: isMobile ? '48px' : '56px',

@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { Users, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import car5Seater from '@/assets/logos/5seatercar.jpg';
+import car7Seater from '@/assets/logos/7seatercar.jpg';
+import car8Seater from '@/assets/logos/8seatercar.jpg';
+import busIcon from '@/assets/logos/bus.png';
 
 const Rentals = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -17,10 +21,10 @@ const Rentals = () => {
   }, []);
 
   const vehicles = [
-    { id: 1, name: '5 Seater Car', passengers: 4, icon: 'src/assets/logos/5seatercar.jpg' },
-    { id: 2, name: '7 Seater Car', passengers: 6, icon: 'src/assets/logos/7seatercar.jpg' },
-    { id: 3, name: '8 Seater Car', passengers: 7, icon: 'src/assets/logos/8seatercar.jpg' },
-    { id: 4, name: 'Bus', passengers: 15, icon: 'src/assets/logos/bus.png' }
+    { id: 1, name: '5 Seater Car', passengers: 4, icon: car5Seater },
+    { id: 2, name: '7 Seater Car', passengers: 6, icon: car7Seater },
+    { id: 3, name: '8 Seater Car', passengers: 7, icon: car8Seater },
+    { id: 4, name: 'Bus', passengers: 15, icon: busIcon }
   ];
 
   const handleEnquire = (vehicle) => {
@@ -125,14 +129,14 @@ const Rentals = () => {
                 gap: '10px',
                 marginBottom: '30px',
                 padding: '15px',
-                backgroundColor: '#e6f2f7', /* Updated color */
+                backgroundColor: '#e6f2f7',
                 borderRadius: '12px'
               }}>
-                <Users size={24} color="#0C516A" /> {/* Updated color */}
+                <Users size={24} color="#0C516A" />
                 <span style={{
                   fontSize: '18px',
                   fontWeight: '600',
-                  color: '#0C516A' /* Updated color */
+                  color: '#0C516A'
                 }}>
                   {vehicle.passengers} Passengers
                 </span>
@@ -145,7 +149,7 @@ const Rentals = () => {
                 style={{
                   width: '100%',
                   padding: '15px',
-                  backgroundColor: '#0C516A', /* Updated color */
+                  backgroundColor: '#0C516A',
                   color: '#ffffff',
                   border: 'none',
                   borderRadius: '12px',
@@ -158,8 +162,8 @@ const Rentals = () => {
                   gap: '10px',
                   transition: 'background-color 0.3s ease'
                 }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#0A4257'} /* Darker shade for hover */
-                onMouseLeave={(e) => e.target.style.backgroundColor = '#0C516A'} /* Updated color */
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#0A4257'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#0C516A'}
               >
                 Enquire Now
                 <ArrowRight size={20} />

@@ -116,7 +116,7 @@ const PackageDetails = () => {
                     height: '100%',
                     objectFit: 'cover'
                   }}
-                  src={`/${data.image}`}/>
+                  src={data.image}/>
                 {type === 'adventure' && data?.difficulty && (
                   <div style={{
                     position: 'absolute',

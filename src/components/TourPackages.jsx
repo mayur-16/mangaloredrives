@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { Building2, ArrowRight, MapPin, Calendar, Users, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import tirupathiTemple from '@/assets/thirupathi_temple.jpg';
+import mantralayaTemple from '@/assets/mantralaya.jpg';
+import sabarimalaTemple from '@/assets/shabhari_malai_temple.jpg';
+import shirdiTemple from '@/assets/shirdi_temple.jpg';
 
 const TourPackages = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -34,7 +38,7 @@ const TourPackages = () => {
     {
       id: 1,
       destination: 'Tirupati Balaji Temple',
-      image: 'src/assets/thirupathi_temple.jpg',
+      image: tirupathiTemple,
       deity: 'Lord Venkateswara',
       significance: 'Most visited pilgrimage site in the world',
       description: 'Seek blessings at the abode of Lord Venkateswara in the sacred Tirumala hills',
@@ -54,7 +58,7 @@ const TourPackages = () => {
     {
       id: 2,
       destination: 'Mantralayam',
-      image: 'src/assets/mantralaya.jpg',
+      image: mantralayaTemple,
       deity: 'Sri Raghavendra Swamy',
       significance: 'Holy Brindavanam of Sri Raghavendra Swamy',
       description: 'Experience divine grace at the sacred Samadhi of Sri Raghavendra Swamy',
@@ -74,7 +78,7 @@ const TourPackages = () => {
     {
       id: 3,
       destination: 'Sabarimala Temple',
-      image: 'src/assets/shabhari_malai_temple.jpg',
+      image: sabarimalaTemple,
       deity: 'Lord Ayyappa',
       significance: 'Sacred hilltop shrine of Lord Ayyappa',
       description: 'Embark on a spiritual journey to the divine abode of Lord Ayyappa',
@@ -94,7 +98,7 @@ const TourPackages = () => {
     {
       id: 4,
       destination: 'Shirdi Sai Baba Temple',
-      image: 'src/assets/shirdi_temple.jpg',
+      image: shirdiTemple,
       deity: 'Sai Baba of Shirdi',
       significance: 'Sacred Samadhi Mandir of Sai Baba',
       description: 'Experience the eternal love and blessings of Sai Baba at his holy abode',

@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { Mountain, ArrowRight, MapPin, Clock, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import netravathiPeak from '@/assets/netravathi-peak.jpeg';
+import kumaraParvatha from '@/assets/kumara-parvatha.jpg';
+import kudureMukha from '@/assets/kudure-mukha.jpeg';
+import thenomadwayLogo from '@/assets/thenomadway_logo.jpeg';
 
 const AdventurePackages = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -34,7 +38,7 @@ const AdventurePackages = () => {
     {
       id: 1,
       destination: 'Netravathi Peak',
-      image: 'src/assets/netravathi-peak.jpeg',
+      image: netravathiPeak,
       specialty: 'Sunset & Sunrise Views',
       description: 'Experience breathtaking 360° views of Western Ghats',
       enroute: ['Kukke Subramanya Temple', 'Somwarpet Forest'],
@@ -52,7 +56,7 @@ const AdventurePackages = () => {
     {
       id: 2,
       destination: 'Kumara Parvatha',
-      image: 'src/assets/kumara-parvatha.jpg',
+      image: kumaraParvatha,
       specialty: 'Karnataka\'s 2nd Highest Peak',
       description: 'Challenge yourself with one of the toughest treks',
       enroute: ['Kukke Subramanya Temple', 'Pushpagiri Wildlife Sanctuary'],
@@ -71,7 +75,7 @@ const AdventurePackages = () => {
     {
       id: 3,
       destination: 'Kuduremukha',
-      image: 'src/assets/kudure-mukha.jpeg',
+      image: kudureMukha,
       specialty: 'Horse Face Mountain',
       description: 'Trek to the iconic horse-shaped peak',
       enroute: ['Kalasa Temple', 'Horanadu Annapoorneshwari Temple'],
@@ -90,7 +94,7 @@ const AdventurePackages = () => {
     {
       id: 4,
       destination: 'Ranijhari Falls',
-      image: 'src/assets/netravathi-peak.jpeg',
+      image: netravathiPeak,
       specialty: 'Hidden Waterfall Paradise',
       description: 'Discover the secret cascade in deep forests',
       enroute: ['Dharmasthala Temple', 'Charmadi Ghat Viewpoint'],
@@ -146,7 +150,7 @@ const AdventurePackages = () => {
           }}>
             <span style={{ fontSize: '18px', color: '#64748b' }}>Powered by</span>
             <img
-              src="https://horizons-cdn.hostinger.com/0ad8efd7-7eaf-4e43-9362-605452a45d21/thenomadway_logo-q8zbP.jpeg"
+              src={thenomadwayLogo}
               alt="The Nomad Way Logo"
               style={{
                 height: '40px',
