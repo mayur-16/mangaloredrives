@@ -123,15 +123,15 @@ const TourPackages = () => {
 
   return (
     <section
-      id="tours"
+      id="temple-tours"
       ref={ref}
       style={{
-        padding: isMobile ? '80px 0' : '100px 0',
+        padding: isMobile ? '40px 0' : '80px 0',
         backgroundColor: '#fefcf3',
         overflow: 'hidden'
       }}
     >
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '0 20px' : '0 40px' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '0 25px' : '0 40px' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -140,7 +140,7 @@ const TourPackages = () => {
         >
         
           <h2 style={{
-            fontSize: isMobile ? '36px' : '48px',
+            fontSize: isMobile ? '30px' : '45px',
             fontWeight: '800',
             color: '#000000',
             marginBottom: '20px'
@@ -150,11 +150,12 @@ const TourPackages = () => {
           <p style={{
             fontSize: '18px',
             color: '#78350f',
-            maxWidth: '700px',
+            maxWidth: '1200px',
             margin: '0 auto',
-            fontStyle: 'italic'
+            lineHeight: '1.6',
+            textAlign: isMobile ?'justify':'center',
           }}>
-            "Yatra to sacred shrines with divine darshan, blessed prasadam, and spiritual experiences"
+            Sacred pilgrimage journeys to divine shrines with organized darshan, comfortable accommodation and spiritual experiences. Complete packages include AC transport with driver, temple entry arrangements, and guided tours to holy temples across India.
           </p>
         </motion.div>
       </div>
@@ -188,7 +189,7 @@ const TourPackages = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
               style={{
-                minWidth: isMobile ? '300px' : '350px',
+                minWidth: isMobile ? '78vw' : '350px',
                 backgroundColor: '#ffffff',
                 borderRadius: '20px',
                 overflow: 'hidden',
@@ -198,7 +199,7 @@ const TourPackages = () => {
                 pointerEvents: 'auto'
               }}
             >
-              <div style={{ position: 'relative', height: '250px', overflow: 'hidden', pointerEvents: 'none' }}>
+              <div style={{ position: 'relative', height: isMobile ?'30vh':'250px', overflow: 'hidden', pointerEvents: 'none' }}>
                 <img
                   alt={`${pkg.destination} pilgrimage destination`}
                   src={pkg.image}
@@ -236,16 +237,16 @@ const TourPackages = () => {
                 </div>
               </div>
 
-              <div style={{ padding: '30px' }}>
+              <div style={{ padding: isMobile ? '20px' :'30px' }}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
-                  marginBottom: '10px'
+                  marginBottom: '15px'
                 }}>
                   <Building2 size={24} color="#d97706" />
                   <h3 style={{
-                    fontSize: '22px',
+                    fontSize: '1.3rem',
                     fontWeight: '700',
                     color: '#000000'
                   }}>
@@ -257,7 +258,7 @@ const TourPackages = () => {
                   backgroundColor: '#fef3c7',
                   padding: '12px',
                   borderRadius: '10px',
-                  marginBottom: '12px',
+                  marginBottom: '15px',
                   borderLeft: '3px solid #d97706'
                 }}>
                   <p style={{
@@ -316,7 +317,7 @@ const TourPackages = () => {
                   onClick={() => handleEnquire(pkg)}
                   style={{
                     width: '100%',
-                    padding: '15px',
+                    padding: isMobile ?'12px':'15px',
                     backgroundColor: '#d97706',
                     color: '#ffffff',
                     border: 'none',

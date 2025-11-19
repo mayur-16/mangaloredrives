@@ -2,13 +2,22 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, MessageCircle, Users, Mountain, Building2, Car, Shield, User, CheckCircle2, MapPin, Calendar, Clock } from 'lucide-react';
+import { ChevronLeft, MessageCircle, Users, Mountain, Building2, Car, Shield, User, CheckCircle2, MapPin, Calendar, Clock } from 'lucide-react';
 
 const PackageDetails = () => {
   const { type, id } = useParams();
+  const [isMobile, setIsMobile] = React.useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const data = location.state?.package || location.state?.vehicle;
+
+  React.useEffect(() => {
+     const checkMobile = () => setIsMobile(window.innerWidth < 768);
+     checkMobile();
+     window.addEventListener('resize', checkMobile);
+     return () => window.removeEventListener('resize', checkMobile);
+   }, []);
+
 
   const handleWhatsAppEnquiry = () => {
     let message = '';
@@ -21,14 +30,14 @@ const PackageDetails = () => {
       message = `Hi! I'm interested in the ${data.destination} tour package. Please provide more details and pricing.`;
     }
 
-    const whatsappUrl = `https://wa.me/919663632802?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/917676498124?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const getIcon = () => {
-    if (type === 'rental') return <Car size={40} color="#0C516A" />;
-    if (type === 'adventure') return <Mountain size={40} color="#0C516A" />;
-    if (type === 'tour') return <Building2 size={40} color="#0C516A" />;
+    if (type === 'rental') return <Car size={isMobile?30:40} color="#0C516A" />;
+    if (type === 'adventure') return <Mountain size={isMobile?30:40} color="#0C516A" />;
+    if (type === 'tour') return <Building2 size={isMobile?30:40} color="#0C516A" />;
   };
 
   const getTitle = () => {
@@ -63,7 +72,7 @@ const PackageDetails = () => {
         padding: '40px 20px'
       }}>
         <div style={{
-          maxWidth: '900px',
+          maxWidth: isMobile?'100%':'80vw',
           margin: '0 auto'
         }}>
           <motion.button
@@ -76,7 +85,7 @@ const PackageDetails = () => {
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
-              padding: '12px 24px',
+              padding: isMobile?'9px 18px':'12px 24px',
               backgroundColor: '#ffffff',
               border: '2px solid #e2e8f0',
               borderRadius: '12px',
@@ -88,8 +97,8 @@ const PackageDetails = () => {
               transition: 'all 0.3s ease'
             }}
           >
-            <ArrowLeft size={20} />
-            Back to Home
+            <ChevronLeft size={20} />
+            Back
           </motion.button>
 
           <motion.div
@@ -105,7 +114,7 @@ const PackageDetails = () => {
           >
             {type !== 'rental' && data?.image && (
               <div style={{
-                height: '400px',
+                height: isMobile?'35vh':'50vh',
                 overflow: 'hidden',
                 position: 'relative'
               }}>
@@ -120,13 +129,13 @@ const PackageDetails = () => {
                 {type === 'adventure' && data?.difficulty && (
                   <div style={{
                     position: 'absolute',
-                    top: '30px',
-                    right: '30px',
+                    top: isMobile?'10px':'30px',
+                    right: isMobile?'10px':'30px',
                     backgroundColor: 'rgba(12, 81, 106, 0.95)',
                     color: '#ffffff',
-                    padding: '12px 24px',
+                    padding: isMobile?'9px 20px':'12px 24px',
                     borderRadius: '30px',
-                    fontSize: '16px',
+                    fontSize: isMobile?'12px':'16px',
                     fontWeight: '700',
                     backdropFilter: 'blur(10px)'
                   }}>
@@ -136,7 +145,7 @@ const PackageDetails = () => {
               </div>
             )}
 
-            <div style={{ padding: '50px' }}>
+            <div style={{ padding: isMobile?'20px':'50px' }}>
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -145,7 +154,7 @@ const PackageDetails = () => {
               }}>
                 {getIcon()}
                 <h1 style={{
-                  fontSize: '36px',
+                  fontSize: isMobile?'25px':'1.8rem',
                   fontWeight: '800',
                   color: '#000000'
                 }}>
@@ -331,7 +340,7 @@ const PackageDetails = () => {
                 <>
                   <div style={{ marginBottom: '40px' }}>
                     <h2 style={{
-                      fontSize: '24px',
+                      fontSize: isMobile?'20px':'24px',
                       fontWeight: '700',
                       color: '#000000',
                       marginBottom: '20px'
@@ -350,7 +359,7 @@ const PackageDetails = () => {
                             display: 'flex',
                             alignItems: 'center',
                             gap: '12px',
-                            padding: '15px',
+                            padding: isMobile?'12px':'15px',
                             backgroundColor: '#f0fdf4',
                             borderRadius: '12px',
                             border: '1px solid #86efac'
@@ -372,7 +381,7 @@ const PackageDetails = () => {
                   {data?.highlights && (
                     <div style={{ marginBottom: '40px' }}>
                       <h2 style={{
-                        fontSize: '24px',
+                        fontSize: isMobile?'20px':'24px',
                         fontWeight: '700',
                         color: '#000000',
                         marginBottom: '20px'
@@ -387,9 +396,9 @@ const PackageDetails = () => {
                         {data.highlights.map((highlight, idx) => (
                           <div key={idx} style={{
                             display: 'flex',
-                            alignItems: 'flex-start',
+                            alignItems: 'center',
                             gap: '12px',
-                            padding: '15px',
+                            padding: isMobile?'12px':'15px',
                             backgroundColor: '#f8fafc',
                             borderRadius: '12px',
                             border: '1px solid #e2e8f0'
@@ -410,10 +419,10 @@ const PackageDetails = () => {
 
                   {data?.enroute && data.enroute.length > 0 && (
                     <div style={{
-                      padding: '25px',
+                      padding: isMobile?'16px':'25px',
                       backgroundColor: '#fef3c7',
                       borderRadius: '16px',
-                      marginBottom: '40px',
+                      marginBottom: isMobile?'20px':'30px',
                       border: '2px solid #fbbf24'
                     }}>
                       <div style={{
@@ -422,9 +431,9 @@ const PackageDetails = () => {
                         gap: '10px',
                         marginBottom: '15px'
                       }}>
-                        <MapPin size={24} color="#92400e" />
+                        <MapPin size={isMobile?20:24} color="#92400e" />
                         <h3 style={{
-                          fontSize: '20px',
+                          fontSize: isMobile?'17px':'20px',
                           fontWeight: '700',
                           color: '#92400e'
                         }}>
@@ -438,7 +447,7 @@ const PackageDetails = () => {
                       }}>
                         {data.enroute.map((place, idx) => (
                           <div key={idx} style={{
-                            padding: '10px 18px',
+                            padding: isMobile?'8px 14px':'10px 18px',
                             backgroundColor: '#fef9c3',
                             borderRadius: '20px',
                             fontSize: '15px',
@@ -456,9 +465,9 @@ const PackageDetails = () => {
               )}
 
               {data?.features && type !== 'adventure' && (
-                <div style={{ marginBottom: '40px' }}>
+                <div style={{ marginBottom: isMobile?'25px':'30px' }}>
                   <h2 style={{
-                    fontSize: '24px',
+                    fontSize: isMobile?'20px':'24px',
                     fontWeight: '700',
                     color: '#000000',
                     marginBottom: '20px'
@@ -475,7 +484,7 @@ const PackageDetails = () => {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px',
-                        padding: '15px',
+                        padding: isMobile?'12px':'15px',
                         backgroundColor: type === 'tour' ? '#fef9c3' : '#f8fafc',
                         borderRadius: '12px',
                         border: type === 'tour' ? '1px solid #fde047' : '1px solid #e2e8f0'
@@ -495,7 +504,7 @@ const PackageDetails = () => {
               )}
 
               {type === 'tour' && data?.highlights && (
-                <div style={{ marginBottom: '40px' }}>
+                <div style={{ marginBottom: isMobile?'30px':'35px' }}>
                   <h2 style={{
                     fontSize: '24px',
                     fontWeight: '700',
@@ -516,9 +525,9 @@ const PackageDetails = () => {
                     {data.highlights.map((highlight, idx) => (
                       <div key={idx} style={{
                         display: 'flex',
-                        alignItems: 'flex-start',
+                        alignItems: 'center',
                         gap: '12px',
-                        padding: '15px',
+                        padding: isMobile?'12px':'15px',
                         backgroundColor: '#fefcf3',
                         borderRadius: '12px',
                         border: '1px solid #fed7aa'
@@ -539,10 +548,10 @@ const PackageDetails = () => {
 
               {type === 'tour' && data?.enroute && data.enroute.length > 0 && (
                 <div style={{
-                  padding: '25px',
+                  padding: isMobile?'16px':'25px',
                   backgroundColor: '#fef3c7',
                   borderRadius: '16px',
-                  marginBottom: '40px',
+                  marginBottom: isMobile?'25px':'30px',
                   border: '2px solid #fbbf24'
                 }}>
                   <div style={{
@@ -553,7 +562,7 @@ const PackageDetails = () => {
                   }}>
                     <MapPin size={24} color="#92400e" />
                     <h3 style={{
-                      fontSize: '20px',
+                      fontSize: isMobile?'17px':'20px',
                       fontWeight: '700',
                       color: '#92400e'
                     }}>
@@ -567,7 +576,7 @@ const PackageDetails = () => {
                   }}>
                     {data.enroute.map((place, idx) => (
                       <div key={idx} style={{
-                        padding: '10px 18px',
+                        padding: isMobile?'8px 14px':'10px 18px',
                         backgroundColor: '#fef9c3',
                         borderRadius: '20px',
                         fontSize: '15px',
@@ -587,10 +596,10 @@ const PackageDetails = () => {
               )}
 
               <div style={{
-                padding: '30px',
+                padding: isMobile?'18px':'26px',
                 backgroundColor: '#dbeafe',
                 borderRadius: '16px',
-                marginBottom: '40px',
+                marginBottom: isMobile?'30px':'40px',
                 border: '2px solid #93c5fd'
               }}>
                 <p style={{
@@ -614,7 +623,7 @@ const PackageDetails = () => {
                   color: '#ffffff',
                   border: 'none',
                   borderRadius: '16px',
-                  fontSize: '18px',
+                  fontSize: isMobile?'15px':'18px',
                   fontWeight: '700',
                   cursor: 'pointer',
                   display: 'flex',
@@ -627,7 +636,7 @@ const PackageDetails = () => {
                 onMouseEnter={(e) => e.target.style.backgroundColor = '#20BA5A'}
                 onMouseLeave={(e) => e.target.style.backgroundColor = '#25D366'}
               >
-                <MessageCircle size={24} />
+                <MessageCircle size={isMobile?20:24} />
                 Enquire Now on WhatsApp
               </motion.button>
             </div>

@@ -16,7 +16,7 @@ const Hero = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
   return <section id="home" ref={ref} style={{
-    minHeight: '100vh',
+    minHeight: '85vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -102,29 +102,7 @@ const Hero = () => {
               color: '#ffffff',
               fontSize: '16px'
             }}>Mangaluru, Karnataka</span>
-            </div>
-            <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px'
-          }}>
-              <Phone size={24} color="#ffffff" />
-              <span style={{
-              color: '#ffffff',
-              fontSize: '16px'
-            }}>+91 9663632802</span>
-            </div>
-            <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px'
-          }}>
-              <Mail size={24} color="#ffffff" />
-              <span style={{
-              color: '#ffffff',
-              fontSize: '16px'
-            }}>info@mangaloredrives.in</span>
-            </div>
+            </div>    
           </div>
         </motion.div>
 

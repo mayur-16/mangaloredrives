@@ -118,53 +118,63 @@ const AdventurePackages = () => {
 
   return (
     <section
-      id="adventure"
+      id="adventure-packages"
       ref={ref}
       style={{
-        padding: isMobile ? '80px 0' : '100px 0',
+        padding: isMobile ? '40px 0' : '80px 0',
         backgroundColor: '#ffffff',
         overflow: 'hidden'
       }}
     >
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '0 20px' : '0 40px' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '0 25px' : '0 40px' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '40px' }}
+          style={{ textAlign: 'center', marginBottom: isMobile ?'10px':'35px' }}
         >
           <h2 style={{
-            fontSize: isMobile ? '36px' : '48px',
+            fontSize: isMobile ? '30px' : '45px',
             fontWeight: '800',
             color: '#000000',
             marginBottom: '20px'
           }}>
             Adventure Packages
           </h2>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '10px',
-            marginBottom: '20px'
-          }}>
-            <span style={{ fontSize: '18px', color: '#64748b' }}>Powered by</span>
-            <img
-              src={thenomadwayLogo}
-              alt="The Nomad Way Logo"
-              style={{
-                height: '40px',
-                width: 'auto'
-              }}
-            />
-          </div>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '10px',
+              marginBottom: '20px'
+            }}>
+              <span style={{ fontSize: '0.9rem', color: '#64748b' }}>Powered by</span>
+              <span style={{ 
+                fontSize: '1rem', 
+                fontWeight: '700', 
+                color: '#0C516A',
+                letterSpacing: '0.5px'
+              }}>
+                The Nomad Way
+              </span>
+              <img
+                src={thenomadwayLogo}
+                alt="The Nomad Way Adventure Tours Logo"
+                style={{
+                  height: '3rem',
+                  width: 'auto'
+                }}
+              />
+            </div>
           <p style={{
             fontSize: '18px',
             color: '#64748b',
-            maxWidth: '700px',
-            margin: '0 auto'
+            maxWidth: '1200px',
+            margin: '0 auto',
+            lineHeight: '1.6',
+            textAlign: isMobile ?'justify':'center',
           }}>
-            Customizable packages with expert guides, safety equipment, and all permits included
+            Customizable packages with guided trekking tours. Experience camping under the stars, scenic hiking trails and relaxing nature escapes in the serene Western Ghats.
           </p>
         </motion.div>
       </div>
@@ -198,7 +208,7 @@ const AdventurePackages = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
               style={{
-                minWidth: isMobile ? '300px' : '350px',
+                minWidth: isMobile ? '78vw' : '350px',
                 backgroundColor: '#ffffff',
                 borderRadius: '20px',
                 overflow: 'hidden',
@@ -208,7 +218,7 @@ const AdventurePackages = () => {
                 pointerEvents: 'auto'
               }}
             >
-              <div style={{ position: 'relative', height: '250px', overflow: 'hidden', pointerEvents: 'none' }}>
+              <div style={{ position: 'relative', height: isMobile ?'30vh':'250px', overflow: 'hidden', pointerEvents: 'none' }}>
                 <img
                   alt={`${pkg.destination} trekking destination`}
                   src={pkg.image}
@@ -234,16 +244,16 @@ const AdventurePackages = () => {
                 </div>
               </div>
 
-              <div style={{ padding: '30px' }}>
+              <div style={{ padding: isMobile ? '20px' :'30px' }}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
-                  marginBottom: '10px'
+                  marginBottom: '15px'
                 }}>
                   <Mountain size={24} color="#0C516A" />
                   <h3 style={{
-                    fontSize: '24px',
+                    fontSize: '1.3rem',
                     fontWeight: '700',
                     color: '#000000'
                   }}>
@@ -301,7 +311,7 @@ const AdventurePackages = () => {
                   onClick={() => handleEnquire(pkg)}
                   style={{
                     width: '100%',
-                    padding: '15px',
+                    padding: isMobile ?'12px':'15px',
                     backgroundColor: '#0C516A',
                     color: '#ffffff',
                     border: 'none',

@@ -12,8 +12,8 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'rentals', 'adventure', 'tours'];
-      const scrollPosition = window.scrollY + 100;
+      const sections = ['home', 'vehicle-rentals', 'adventure-packages', 'temple-tours'];
+      const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
         const element = document.getElementById(section);

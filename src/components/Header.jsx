@@ -39,9 +39,9 @@ const Header = ({ activeSection }) => {
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'rentals', label: 'Rentals' },
-    { id: 'adventure', label: 'Adventure Packages' },
-    { id: 'tours', label: 'Tour Packages' }
+    { id: 'vehicle-rentals', label: 'Rentals' },
+    { id: 'adventure-packages', label: 'Adventure Packages' },
+    { id: 'temple-tours', label: 'Tour Packages' }
   ];
 
   return (

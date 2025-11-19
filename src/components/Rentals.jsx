@@ -33,10 +33,10 @@ const Rentals = () => {
 
   return (
     <section
-      id="rentals"
+      id="vehicle-rentals"
       ref={ref}
       style={{
-        padding: isMobile ? '80px 20px' : '100px 40px',
+        padding: isMobile ? '50px 20px' : '100px 40px',
         backgroundColor: '#f8fafc'
       }}
     >
@@ -48,7 +48,7 @@ const Rentals = () => {
           style={{ textAlign: 'center', marginBottom: '60px' }}
         >
           <h2 style={{
-            fontSize: isMobile ? '36px' : '48px',
+            fontSize: isMobile ? '30px' : '45px',
             fontWeight: '800',
             color: '#000000',
             marginBottom: '20px'
@@ -58,10 +58,11 @@ const Rentals = () => {
           <p style={{
             fontSize: '18px',
             color: '#64748b',
-            maxWidth: '600px',
-            margin: '0 auto'
+            margin: '0 15px',
+            lineHeight: '1.6',
+            textAlign: isMobile ? 'justify':'center',
           }}>
-            Choose from our fleet of well-maintained vehicles with professional drivers
+         Premium chauffeur-driven car rental services in Mangaluru. Choose from our fleet of well-maintained AC vehicles including sedans, SUVs, tempo travellers, and mini buses for local trips, outstation tours, airport transfers, and temple visits. 24/7 availability with professional drivers.
           </p>
         </motion.div>
 
@@ -80,7 +81,7 @@ const Rentals = () => {
               style={{
                 backgroundColor: '#ffffff',
                 borderRadius: '20px',
-                padding: '40px',
+                padding: isMobile ?'20px 40px':'40px',
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
                 border: '2px solid #e2e8f0',
                 transition: 'all 0.3s ease'
@@ -98,14 +99,14 @@ const Rentals = () => {
                 style={{
                   fontSize: '80px',
                   textAlign: 'center',
-                  marginBottom: '20px'
+                  marginBottom: '0px'
                 }}
               >
                 <img
                   alt={`${vehicle.name}`}
                   src={vehicle.icon}
                   style={{
-                    width: '120px',
+                    width: 'auto',
                     height: '80px',
                     objectFit: 'cover',
                   }}
@@ -127,8 +128,8 @@ const Rentals = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '10px',
-                marginBottom: '30px',
-                padding: '15px',
+                marginBottom: isMobile ?'20px':'30px',
+                padding: isMobile ?'10px':'15px',
                 backgroundColor: '#e6f2f7',
                 borderRadius: '12px'
               }}>
@@ -148,7 +149,7 @@ const Rentals = () => {
                 onClick={() => handleEnquire(vehicle)}
                 style={{
                   width: '100%',
-                  padding: '15px',
+                  padding: isMobile ?'12px':'15px',
                   backgroundColor: '#0C516A',
                   color: '#ffffff',
                   border: 'none',
