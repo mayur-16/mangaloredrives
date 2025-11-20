@@ -145,6 +145,33 @@ const PackageDetails = () => {
               </div>
             )}
 
+            {type === 'rental' && data?.icon && (
+              <div style={{
+                height: isMobile?'30vh':'40vh',
+                overflow: 'hidden',
+                position: 'relative'
+              }}>
+                <motion.img
+                  animate={{
+                    y: [0, -10, 0]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  alt={`${data.name}`}
+                  src={data.icon}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                  }}
+                />
+               
+              </div>
+            )}
+
             <div style={{ padding: isMobile?'20px':'50px' }}>
               <div style={{
                 display: 'flex',
@@ -310,12 +337,12 @@ const PackageDetails = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '15px',
-                  padding: '25px',
+                  padding: isMobile?'15px 10px':'20px',
                   backgroundColor: '#e6f2f7',
                   borderRadius: '16px',
                   marginBottom: '40px'
                 }}>
-                  <Users size={32} color="#0C516A" />
+                  <Users size={isMobile?28:32} color="#0C516A" />
                   <div>
                     <span style={{
                       fontSize: '14px',
@@ -326,7 +353,7 @@ const PackageDetails = () => {
                       Passenger Capacity
                     </span>
                     <span style={{
-                      fontSize: '24px',
+                      fontSize: isMobile?'18px':'24px',
                       fontWeight: '700',
                       color: '#0C516A'
                     }}>

@@ -15,6 +15,25 @@ npm run dev
 
 ------------------------------------------------
 
+for optimizing svg files
+# One-time optimization of all SVGs (overwrites originals – safe & recommended)
+npx svgo src/assets/**/*.svg --pretty --indent=2
+
+# OR if you want to keep originals and output to a new folder
+npx svgo src/assets/**/*.svg -o src/assets/optimized-svg/
+
+---- -------------- ------- ------- ----------- ---------
+
+for converting jpeg/png to webp
+
+-> install package as npm install --save-dev sharp. (alway install as local package for version management)
+
+-> make a file in project root as convert-to-webp.cjs
+
+-> update source and destination as your requirement
+
+-> run node convert-to-webp.cjs
+
 
 ### `npm run build`
 

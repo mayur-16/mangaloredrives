@@ -4,13 +4,20 @@ import { Menu, X } from 'lucide-react';
 
 const Header = ({ activeSection }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const heroSection = document.getElementById('home');
+      const heroHeight = heroSection ? heroSection.offsetHeight : 600;
+      const scrollPosition = window.scrollY;
+      
+      setScrolled(scrollPosition > 50);
+      setPastHero(scrollPosition > heroHeight - 100);
     };
+    
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
@@ -21,6 +28,10 @@ const Header = ({ activeSection }) => {
     
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
+    
+    // Initial check
+    handleScroll();
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
@@ -33,7 +44,7 @@ const Header = ({ activeSection }) => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     if (isMobile) {
-        setIsMenuOpen(false);
+      setIsMenuOpen(false);
     }
   };
 
@@ -43,6 +54,39 @@ const Header = ({ activeSection }) => {
     { id: 'adventure-packages', label: 'Adventure Packages' },
     { id: 'temple-tours', label: 'Tour Packages' }
   ];
+
+  // Determine background color based on scroll position and mobile view
+  const getBackgroundColor = () => {
+    if (isMenuOpen) return 'rgba(255, 255, 255, 0.95)';
+    if (isMobile && !pastHero) return 'rgba(173, 216, 230, 0.3)'; // Light blue transparent
+    if (scrolled || pastHero) return 'rgba(255, 255, 255, 0.95)';
+    return '#ffffff';
+  };
+
+  const getBackdropFilter = () => {
+    if (isMenuOpen) return 'blur(10px)';
+    if (isMobile && !pastHero) return 'blur(10px)';
+    if (scrolled || pastHero) return 'blur(10px)';
+    return 'none';
+  };
+
+  const getBoxShadow = () => {
+    if (isMenuOpen) return '0 2px 20px rgba(0, 0, 0, 0.1)';
+    if (isMobile && !pastHero) return 'none';
+    if (scrolled || pastHero) return '0 2px 20px rgba(0, 0, 0, 0.1)';
+    return 'none';
+  };
+
+  // Determine text color based on scroll and mobile state
+  const getTextColor = () => {
+    if (isMobile && !pastHero) return '#ffffff';
+    return '#0C516A';
+  };
+
+  const getIconColor = () => {
+    if (isMobile && !pastHero) return '#ffffff';
+    return '#000000';
+  };
 
   return (
     <motion.header
@@ -55,9 +99,9 @@ const Header = ({ activeSection }) => {
         left: 0,
         right: 0,
         zIndex: 1000,
-        backgroundColor: scrolled || isMenuOpen ? 'rgba(255, 255, 255, 0.95)' : '#ffffff',
-        backdropFilter: scrolled || isMenuOpen ? 'blur(10px)' : 'none',
-        boxShadow: scrolled || isMenuOpen ? '0 2px 20px rgba(0, 0, 0, 0.1)' : 'none',
+        backgroundColor: getBackgroundColor(),
+        backdropFilter: getBackdropFilter(),
+        boxShadow: getBoxShadow(),
         transition: 'all 0.3s ease'
       }}
     >
@@ -69,29 +113,43 @@ const Header = ({ activeSection }) => {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          style={{ cursor: 'pointer', zIndex: 1001 }}
-          onClick={() => scrollToSection('home')}
-        >
-          <span style={{
-            fontSize: '24px',
-            fontWeight: '700',
-            color: '#0C516A', /* Updated color */
-            letterSpacing: '-0.5px'
-          }}>
-            Mangalore Drives
-          </span>
-        </motion.div>
+        <AnimatePresence mode="wait">
+          {(!isMobile || pastHero) && (
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.05 }}
+              style={{ cursor: 'pointer', zIndex: 1001 }}
+              onClick={() => scrollToSection('home')}
+            >
+              <span style={{
+                fontSize: '24px',
+                fontWeight: '700',
+                color: getTextColor(),
+                letterSpacing: '-0.5px'
+              }}>
+                Mangalore Drives
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {isMobile ? (
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', zIndex: 1001 }}
+            style={{ 
+              background: 'none', 
+              border: 'none', 
+              cursor: 'pointer', 
+              zIndex: 1001,
+              marginLeft: (!pastHero && isMobile) ? 'auto' : '0'
+            }}
           >
-            {isMenuOpen ? <X size={28} color="#000000" /> : <Menu size={28} color="#000000" />}
+            {isMenuOpen ? <X size={28} color='#000000' /> : <Menu size={28} color={getIconColor()} />}
           </motion.button>
         ) : (
           <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
@@ -106,7 +164,7 @@ const Header = ({ activeSection }) => {
                   border: 'none',
                   fontSize: '16px',
                   fontWeight: activeSection === item.id ? '600' : '500',
-                  color: activeSection === item.id ? '#0C516A' : '#000000', /* Updated color */
+                  color: activeSection === item.id ? '#0C516A' : '#000000',
                   cursor: 'pointer',
                   position: 'relative',
                   padding: '8px 0',
@@ -123,7 +181,7 @@ const Header = ({ activeSection }) => {
                       left: 0,
                       right: 0,
                       height: '3px',
-                      backgroundColor: '#0C516A', /* Updated color */
+                      backgroundColor: '#0C516A',
                       borderRadius: '2px'
                     }}
                   />
@@ -162,7 +220,7 @@ const Header = ({ activeSection }) => {
                   border: 'none',
                   fontSize: '18px',
                   fontWeight: '600',
-                  color: activeSection === item.id ? '#0C516A' : '#000000', /* Updated color */
+                  color: activeSection === item.id ? '#0C516A' : '#000000',
                   cursor: 'pointer',
                   padding: '10px 0',
                 }}
