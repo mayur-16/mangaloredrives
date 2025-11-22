@@ -113,14 +113,18 @@ const SEOHead = ({
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Open Graph / Facebook */}
-      <meta property="og:type" content={pageType} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:image:alt" content={description} />
-      <meta property="og:site_name" content="Mangalore Drives" />
-      <meta property="og:locale" content="en_IN" />
+     <meta property="og:type" content={pageType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:image:alt" content="Mangalore Drives - Car Rental & Adventure Tours" />
+    <meta property="og:site_name" content="Mangalore Drives" />
+    <meta property="og:locale" content="en_IN" />
       
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
