@@ -25,7 +25,7 @@ const Hero = () => {
     position: 'relative',
     overflow: 'hidden'
   }}>
-      <div style={{
+    <div style={{
       position: 'absolute',
       top: 0,
       left: 0,
@@ -36,18 +36,18 @@ const Hero = () => {
       backgroundSize: '50px 50px'
     }} />
 
-      <div style={{
+    <div style={{
       maxWidth: '1400px',
       width: '100%',
       display: 'grid',
       gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-      gap: isMobile ? '60px' : '80px',
+      gap: isMobile ? '50px' : '80px',
       alignItems: 'center',
       position: 'relative',
       zIndex: 1,
       textAlign: isMobile ? 'center' : 'left'
     }}>
-        <motion.div initial={{
+      <motion.div initial={{
         opacity: 0,
         y: 50
       }} animate={isInView ? {
@@ -60,56 +60,56 @@ const Hero = () => {
         flexDirection: 'column',
         alignItems: isMobile ? 'center' : 'flex-start'
       }}>
-          <img 
+        <img
           alt="Mangalore Drives logo"
-           loading="eager" 
-            style={{
-          width: isMobile ?'30vw':'180px',
-          height: 'auto',
-          marginBottom: '30px',
-          borderRadius: '20px',
-        }} src={logoImage} />
+          loading="eager"
+          style={{
+            width: isMobile ? '30vw' : '180px',
+            height: 'auto',
+            marginBottom: '30px',
+            borderRadius: '20px',
+          }} src={logoImage} />
 
-          <h1 style={{
+        <h1 style={{
           fontSize: isMobile ? '42px' : '56px',
           fontWeight: '800',
           color: '#ffffff',
           marginBottom: '20px',
           lineHeight: '1.2'
         }}>
-            Mangalore Drives
-          </h1>
-          <p style={{
+          Mangalore Drives
+        </h1>
+        <p style={{
           fontSize: isMobile ? '17px' : '20px',
           color: 'rgba(255, 255, 255, 0.9)',
           marginBottom: '40px',
           lineHeight: '1.6',
           maxWidth: '600px'
         }}>
-            Your trusted partner for premium car rentals and unforgettable adventure experiences in Mangaluru. We provide comfortable vehicles with professional drivers and curated tour packages.
-          </p>
+          Your trusted partner for premium car rentals and unforgettable adventure experiences in Mangaluru. We provide comfortable vehicles with professional drivers and curated tour packages.
+        </p>
 
-          <div style={{
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '15px',
           alignItems: isMobile ? 'center' : 'flex-start'
         }}>
-            <div style={{
+          <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '12px'
           }}>
-              <MapPin size={isMobile ?20:24} color="#ffffff" />
-              <span style={{
+            <MapPin size={isMobile ? 20 : 24} color="#ffffff" />
+            <span style={{
               color: '#ffffff',
-              fontSize: isMobile ?'14px':'16px'
+              fontSize: isMobile ? '14px' : '16px'
             }}>Mangaluru, Karnataka</span>
-            </div>    
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
 
-        <motion.div initial={{
+      <motion.div initial={{
         opacity: 0,
         x: 50
       }} animate={isInView ? {
@@ -123,80 +123,80 @@ const Hero = () => {
         gridTemplateColumns: '1fr 1fr',
         gap: '20px'
       }}>
-          <div style={{
+        <div style={{
           backgroundColor: 'rgba(255, 255, 255, 0.15)',
           backdropFilter: 'blur(10px)',
-          padding: isMobile ?'20px':'30px',
+          padding: isMobile ? '20px' : '30px',
           borderRadius: '20px',
           border: '1px solid rgba(255, 255, 255, 0.2)'
         }}>
-            <h3 style={{
+          <h3 style={{
             fontSize: isMobile ? '32px' : '40px',
             fontWeight: '700',
             color: '#ffffff',
             marginBottom: '10px'
           }}>500+</h3>
-            <p style={{
+          <p style={{
             color: 'rgba(255, 255, 255, 0.9)',
             fontSize: '16px'
           }}>Happy Customers</p>
-          </div>
-          <div style={{
+        </div>
+        <div style={{
           backgroundColor: 'rgba(255, 255, 255, 0.15)',
           backdropFilter: 'blur(10px)',
           padding: '30px',
           borderRadius: '20px',
           border: '1px solid rgba(255, 255, 255, 0.2)'
         }}>
-            <h3 style={{
+          <h3 style={{
             fontSize: isMobile ? '32px' : '40px',
             fontWeight: '700',
             color: '#ffffff',
             marginBottom: '10px'
           }}>50+</h3>
-            <p style={{
+          <p style={{
             color: 'rgba(255, 255, 255, 0.9)',
             fontSize: '16px'
           }}>Vehicles</p>
-          </div>
-          <div style={{
+        </div>
+        <div style={{
           backgroundColor: 'rgba(255, 255, 255, 0.15)',
           backdropFilter: 'blur(10px)',
           padding: '30px',
           borderRadius: '20px',
           border: '1px solid rgba(255, 255, 255, 0.2)'
         }}>
-            <h3 style={{
+          <h3 style={{
             fontSize: isMobile ? '32px' : '40px',
             fontWeight: '700',
             color: '#ffffff',
             marginBottom: '10px'
           }}>24/7</h3>
-            <p style={{
+          <p style={{
             color: 'rgba(255, 255, 255, 0.9)',
             fontSize: '16px'
           }}>Support</p>
-          </div>
-          <div style={{
+        </div>
+        <div style={{
           backgroundColor: 'rgba(255, 255, 255, 0.15)',
           backdropFilter: 'blur(10px)',
           padding: '30px',
           borderRadius: '20px',
           border: '1px solid rgba(255, 255, 255, 0.2)'
         }}>
-            <h3 style={{
+          <h3 style={{
             fontSize: isMobile ? '32px' : '40px',
             fontWeight: '700',
             color: '#ffffff',
             marginBottom: '10px'
           }}>100%</h3>
-            <p style={{
+          <p style={{
             color: 'rgba(255, 255, 255, 0.9)',
             fontSize: '16px'
           }}>Satisfaction</p>
-          </div>
-        </motion.div>
-      </div>
-    </section>;
+        </div>
+      </motion.div>
+    </div>
+  </section>;
 };
 export default Hero;

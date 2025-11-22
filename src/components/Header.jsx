@@ -13,11 +13,11 @@ const Header = ({ activeSection }) => {
       const heroSection = document.getElementById('home');
       const heroHeight = heroSection ? heroSection.offsetHeight : 600;
       const scrollPosition = window.scrollY;
-      
+
       setScrolled(scrollPosition > 50);
       setPastHero(scrollPosition > heroHeight - 100);
     };
-    
+
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
@@ -25,13 +25,13 @@ const Header = ({ activeSection }) => {
         setIsMenuOpen(false);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
-    
+
     // Initial check
     handleScroll();
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
@@ -141,10 +141,10 @@ const Header = ({ activeSection }) => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            style={{ 
-              background: 'none', 
-              border: 'none', 
-              cursor: 'pointer', 
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
               zIndex: 1001,
               marginLeft: (!pastHero && isMobile) ? 'auto' : '0'
             }}
@@ -218,11 +218,11 @@ const Header = ({ activeSection }) => {
                 style={{
                   background: 'none',
                   border: 'none',
-                  fontSize: '18px',
+                  fontSize: '15px',
                   fontWeight: '600',
                   color: activeSection === item.id ? '#0C516A' : '#000000',
                   cursor: 'pointer',
-                  padding: '10px 0',
+                  padding: '8px 0',
                 }}
               >
                 {item.label}

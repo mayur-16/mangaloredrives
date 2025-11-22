@@ -18,13 +18,13 @@ const AdventurePackages = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-        const mobile = window.innerWidth < 768;
-        setIsMobile(mobile);
-        if (carouselRef.current) {
-            setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-        }
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (carouselRef.current) {
+        setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+      }
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     const timer = setTimeout(checkMobile, 500);
@@ -122,85 +122,85 @@ const AdventurePackages = () => {
       id="adventure-packages"
       ref={ref}
       style={{
-        padding: isMobile ? '40px 0' : '80px 0',
+        padding: isMobile ? '35px 0' : '80px 0',
         backgroundColor: '#ffffff',
         overflow: 'hidden'
       }}
     >
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '0 25px' : '0 40px' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '0 28px' : '0 40px' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: isMobile ?'10px':'35px' }}
+          style={{ textAlign: 'center', marginBottom: isMobile ? '10px' : '35px' }}
         >
           <h2 style={{
-            fontSize: isMobile ? '30px' : '45px',
+            fontSize: isMobile ? '24px' : '45px',
             fontWeight: '800',
             color: '#000000',
             marginBottom: '20px'
           }}>
             Adventure Packages
           </h2>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '10px',
-              marginBottom: '20px'
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '10px',
+            marginBottom: '20px'
+          }}>
+            <span style={{ fontSize: '0.9rem', color: '#64748b' }}>Powered by</span>
+            <span style={{
+              fontSize: '0.9rem',
+              fontWeight: '700',
+              color: '#0C516A',
+              letterSpacing: '0.5px'
             }}>
-              <span style={{ fontSize: '0.9rem', color: '#64748b' }}>Powered by</span>
-              <span style={{ 
-                fontSize: '1rem', 
-                fontWeight: '700', 
-                color: '#0C516A',
-                letterSpacing: '0.5px'
-              }}>
-                The Nomad Way
-              </span>
-              <img
-                src={thenomadwayLogo}
-                alt="The Nomad Way Adventure Tours Logo"
-                loading="lazy"
-                style={{
-                  height: '3rem',
-                  width: 'auto'
-                }}
-              />
-            </div>
+              The Nomad Way
+            </span>
+            <img
+              src={thenomadwayLogo}
+              alt="The Nomad Way Adventure Tours Logo"
+              loading="lazy"
+              style={{
+                height: '3rem',
+                width: 'auto'
+              }}
+            />
+          </div>
           <p style={{
-            fontSize: '18px',
+            fontSize: isMobile ? '16px' : '18px',
             color: '#64748b',
             maxWidth: '1200px',
             margin: '0 auto',
             lineHeight: '1.6',
-            textAlign: isMobile ?'justify':'center',
+            textAlign: isMobile ? 'justify' : 'center',
           }}>
             Customizable packages with guided trekking tours. Experience camping under the stars, scenic hiking trails and relaxing nature escapes in the serene Western Ghats.
           </p>
         </motion.div>
       </div>
-      
-      <motion.div 
+
+      <motion.div
         ref={carouselRef}
         style={{
-            cursor: 'grab',
-            overflow: 'hidden',
-            paddingLeft: isMobile ? '20px' : '40px',
-            paddingRight: isMobile ? '20px' : '40px',
-            maxWidth: '1400px', 
-            margin: '0 auto'
+          cursor: 'grab',
+          overflow: 'hidden',
+          paddingLeft: isMobile ? '15px' : '40px',
+          paddingRight: isMobile ? '15px' : '40px',
+          maxWidth: '1450px', 
+          margin: '0 auto'
         }}
       >
-        <motion.div 
-            drag="x"
-            dragConstraints={{ right: 0, left: -carouselWidth }}
-            style={{
-                display: 'flex',
-                gap: '30px',
-                padding: '20px 5px',
-            }}
-            whileTap={{ cursor: 'grabbing' }}
+        <motion.div
+          drag="x"
+          dragConstraints={{ right: 0, left: -carouselWidth }}
+          style={{
+            display: 'flex',
+            gap: isMobile?'10px':'30px',
+            padding: isMobile?'10px 5px':'20px 5px',
+          }}
+          whileTap={{ cursor: 'grabbing' }}
         >
           {packages.map((pkg, index) => (
             <motion.div
@@ -210,7 +210,7 @@ const AdventurePackages = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
               style={{
-                minWidth: isMobile ? '78vw' : '350px',
+                minWidth: isMobile ? '80vw' : '350px',
                 backgroundColor: '#ffffff',
                 borderRadius: '20px',
                 overflow: 'hidden',
@@ -220,11 +220,11 @@ const AdventurePackages = () => {
                 pointerEvents: 'auto'
               }}
             >
-              <div style={{ position: 'relative', height: isMobile ?'30vh':'250px', overflow: 'hidden', pointerEvents: 'none' }}>
+              <div style={{ position: 'relative', height: isMobile ? '26vh' : '250px', overflow: 'hidden', pointerEvents: 'none' }}>
                 <img
                   alt={`${pkg.destination} trekking destination`}
                   src={pkg.image}
-                  loading="lazy" 
+                  loading="lazy"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -233,13 +233,13 @@ const AdventurePackages = () => {
                 />
                 <div style={{
                   position: 'absolute',
-                  top: '20px',
-                  right: '20px',
+                  top: isMobile?'15px':'20px',
+                  right: isMobile?'15px':'20px',
                   backgroundColor: 'rgba(12, 81, 106, 0.9)',
                   color: '#ffffff',
-                  padding: '8px 16px',
+                  padding: isMobile?'7px 12px':'8px 16px',
                   borderRadius: '20px',
-                  fontSize: '14px',
+                  fontSize: isMobile?'11px':'13px',
                   fontWeight: '600',
                   backdropFilter: 'blur(10px)'
                 }}>
@@ -247,16 +247,16 @@ const AdventurePackages = () => {
                 </div>
               </div>
 
-              <div style={{ padding: isMobile ? '20px' :'30px' }}>
+              <div style={{ padding: isMobile ? '15px' : '30px' }}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
-                  marginBottom: '15px'
+                  marginBottom: isMobile ?'12px':'15px'
                 }}>
-                  <Mountain size={24} color="#0C516A" />
+                  <Mountain size={isMobile ?20 :24} color="#0C516A" />
                   <h3 style={{
-                    fontSize: '1.3rem',
+                    fontSize: '1.2rem',
                     fontWeight: '700',
                     color: '#000000'
                   }}>
@@ -266,9 +266,9 @@ const AdventurePackages = () => {
 
                 <div style={{
                   backgroundColor: '#f0f9ff',
-                  padding: '12px',
+                  padding: isMobile ?'8px':'12px',
                   borderRadius: '10px',
-                  marginBottom: '15px',
+                  marginBottom: isMobile ?'10px':'15px',
                   borderLeft: '3px solid #0C516A'
                 }}>
                   <p style={{
@@ -292,8 +292,8 @@ const AdventurePackages = () => {
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '8px',
-                  marginBottom: '20px',
-                  padding: '12px',
+                   marginBottom: isMobile ?'18px':'20px',
+                  padding: isMobile ?'8px':'12px',
                   backgroundColor: '#fef3c7',
                   borderRadius: '10px'
                 }}>
@@ -314,12 +314,12 @@ const AdventurePackages = () => {
                   onClick={() => handleEnquire(pkg)}
                   style={{
                     width: '100%',
-                    padding: isMobile ?'12px':'15px',
+                    padding: isMobile ? '11px' : '15px',
                     backgroundColor: '#0C516A',
                     color: '#ffffff',
                     border: 'none',
                     borderRadius: '12px',
-                    fontSize: '16px',
+                    fontSize: isMobile ?'14px':'16px',
                     fontWeight: '600',
                     cursor: 'pointer',
                     display: 'flex',

@@ -51,7 +51,7 @@ const Rentals = () => {
         setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
       }
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     const timer = setTimeout(checkMobile, 500);
@@ -63,10 +63,10 @@ const Rentals = () => {
   }, [isInView]);
 
   const vehicles = [
-    { 
-      id: 1, 
-      name: '5 Seater Car', 
-      passengers: 4, 
+    {
+      id: 1,
+      name: '5 Seater Car',
+      passengers: 4,
       icon: car5Seater,
       specialty: 'Perfect for Families',
       description: 'Comfortable sedan ideal for city tours and short trips',
@@ -79,10 +79,10 @@ const Rentals = () => {
       suitableFor: ['Airport Transfers', 'City Tours', 'Family Outings'],
       availability: '24/7 Available'
     },
-    { 
-      id: 2, 
-      name: '7 Seater Car', 
-      passengers: 6, 
+    {
+      id: 2,
+      name: '7 Seater Car',
+      passengers: 6,
       icon: car7Seater,
       specialty: 'Premium SUV Experience',
       description: 'Spacious SUV perfect for group travel and outstation tours',
@@ -95,10 +95,10 @@ const Rentals = () => {
       suitableFor: ['Temple Tours', 'Outstation Trips', 'Group Travel'],
       availability: '24/7 Available'
     },
-    { 
-      id: 3, 
-      name: '8 Seater Car', 
-      passengers: 7, 
+    {
+      id: 3,
+      name: '8 Seater Car',
+      passengers: 7,
       icon: car8Seater,
       specialty: 'Comfortable Group Travel',
       description: 'Premium comfort for larger groups and family gatherings',
@@ -111,10 +111,10 @@ const Rentals = () => {
       suitableFor: ['Wedding Transfers', 'Large Groups', 'Corporate Events'],
       availability: '24/7 Available'
     },
-    { 
-      id: 4, 
-      name: 'Mini Bus', 
-      passengers: 15, 
+    {
+      id: 4,
+      name: 'Mini Bus',
+      passengers: 15,
       icon: busIcon,
       specialty: 'Budget-Friendly for Large Groups',
       description: 'Perfect for long trip with friends, school trips, and large gatherings',
@@ -124,7 +124,7 @@ const Rentals = () => {
         'Cost-effective group transport',
         'Suitable for multi-day tours'
       ],
-      suitableFor: ['Corporate Events', 'School Trips', 'Pilgrimages','Long tours'],
+      suitableFor: ['Corporate Events', 'School Trips', 'Pilgrimages', 'Long tours'],
       availability: 'Advance Booking Required'
     }
   ];
@@ -138,7 +138,7 @@ const Rentals = () => {
       id="vehicle-rentals"
       ref={ref}
       style={{
-        padding: isMobile ? '40px 0' : '80px 0',
+        padding: isMobile ? '35px 0' : '80px 0',
         backgroundColor: '#f8fafc',
         overflow: 'hidden'
       }}
@@ -148,10 +148,10 @@ const Rentals = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: isMobile ? '30px' : '40px' }}
+          style={{ textAlign: 'center', marginBottom: isMobile ? '15px' : '40px' }}
         >
           <h2 style={{
-            fontSize: isMobile ? '30px' : '45px',
+            fontSize: isMobile ? '24px' : '45px',
             fontWeight: '800',
             color: '#000000',
             marginBottom: '20px'
@@ -159,7 +159,7 @@ const Rentals = () => {
             Our Vehicle Rentals
           </h2>
           <p style={{
-            fontSize: '18px',
+            fontSize: isMobile ? '16px' : '18px',
             color: '#64748b',
             maxWidth: '1200px',
             margin: '0 auto',
@@ -171,24 +171,24 @@ const Rentals = () => {
         </motion.div>
       </div>
 
-      <motion.div 
+      <motion.div
         ref={carouselRef}
         style={{
           cursor: 'grab',
           overflow: 'hidden',
-          paddingLeft: isMobile ? '20px' : '40px',
-          paddingRight: isMobile ? '20px' : '40px',
-          maxWidth: '1400px', 
+          paddingLeft: isMobile ? '15px' : '40px',
+          paddingRight: isMobile ? '15px' : '40px',
+          maxWidth: '1450px',
           margin: '0 auto'
         }}
       >
-        <motion.div 
+        <motion.div
           drag="x"
           dragConstraints={{ right: 0, left: -carouselWidth }}
           style={{
             display: 'flex',
-            gap: '30px',
-            padding: '20px 5px',
+            gap: isMobile ? '10px' : '30px',
+            padding: isMobile ? '10px 5px' : '20px 5px',
           }}
           whileTap={{ cursor: 'grabbing' }}
         >
@@ -200,7 +200,7 @@ const Rentals = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
               style={{
-                minWidth: isMobile ? '78vw' : '350px',
+                minWidth: isMobile ? '80vw' : '350px',
                 backgroundColor: '#ffffff',
                 borderRadius: '20px',
                 overflow: 'hidden',
@@ -210,12 +210,12 @@ const Rentals = () => {
                 pointerEvents: 'auto'
               }}
             >
-              <div style={{ 
-                position: 'relative', 
-                height: isMobile ? '200px' : '220px', 
+              <div style={{
+                position: 'relative',
+                height: isMobile ? '26vh' : '220px',
                 overflow: 'hidden',
                 display: 'flex',
-                alignItems: 'center',
+                alignItems: 'end',
                 justifyContent: 'center',
                 backgroundColor: '#f8fafc',
                 pointerEvents: 'none'
@@ -240,34 +240,34 @@ const Rentals = () => {
                 />
                 <div style={{
                   position: 'absolute',
-                  top: '20px',
-                  right: '20px',
+                  top: isMobile ? '15px' : '20px',
+                  right: isMobile ? '15px' : '20px',
                   backgroundColor: 'rgba(12, 81, 106, 0.9)',
                   color: '#ffffff',
-                  padding: '8px 16px',
+                  padding: isMobile ? '7px 12px' : '8px 16px',
                   borderRadius: '20px',
-                  fontSize: '13px',
+                  fontSize: isMobile ? '11px' : '13px',
                   fontWeight: '600',
                   backdropFilter: 'blur(10px)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px'
                 }}>
-                  <Clock size={14} />
+                  <Clock size={isMobile ? 12 : 14} />
                   {vehicle.availability}
                 </div>
               </div>
 
-              <div style={{ padding: isMobile ? '20px' : '30px' }}>
+              <div style={{ padding: isMobile ? '15px' : '30px' }}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
-                  marginBottom: '15px'
+                  marginBottom: isMobile ? '12px' : '15px'
                 }}>
-                  <Users size={24} color="#0C516A" />
+                  <Users size={isMobile ? 20 : 24} color="#0C516A" />
                   <h3 style={{
-                    fontSize: '1.3rem',
+                    fontSize: '1.2rem',
                     fontWeight: '700',
                     color: '#000000'
                   }}>
@@ -277,9 +277,9 @@ const Rentals = () => {
 
                 <div style={{
                   backgroundColor: '#f0f9ff',
-                  padding: '12px',
+                  padding: isMobile ? '8px' : '12px',
                   borderRadius: '10px',
-                  marginBottom: '15px',
+                  marginBottom: isMobile ? '10px' : '15px',
                   borderLeft: '3px solid #0C516A'
                 }}>
                   <p style={{
@@ -304,14 +304,14 @@ const Rentals = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '10px',
-                  marginBottom: '15px',
-                  padding: '12px',
+                  marginBottom: isMobile ? '12px' : '15px',
+                  padding: isMobile ? '10px' : '12px',
                   backgroundColor: '#e6f2f7',
                   borderRadius: '12px'
                 }}>
-                  <Users size={20} color="#0C516A" />
+                  <Users size={isMobile ? 17 : 20} color="#0C516A" />
                   <span style={{
-                    fontSize: '16px',
+                    fontSize: isMobile ? '13px' : '16px',
                     fontWeight: '600',
                     color: '#0C516A'
                   }}>
@@ -358,8 +358,8 @@ const Rentals = () => {
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '8px',
-                  marginBottom: '20px',
-                  padding: '12px',
+                  marginBottom: isMobile ? '18px' : '20px',
+                  padding: isMobile ? '8px' : '12px',
                   backgroundColor: '#fef3c7',
                   borderRadius: '10px'
                 }}>
@@ -380,12 +380,12 @@ const Rentals = () => {
                   onClick={() => handleEnquire(vehicle)}
                   style={{
                     width: '100%',
-                    padding: isMobile ? '12px' : '15px',
+                    padding: isMobile ? '11px' : '15px',
                     backgroundColor: '#0C516A',
                     color: '#ffffff',
                     border: 'none',
                     borderRadius: '12px',
-                    fontSize: '16px',
+                    fontSize: isMobile ? '14px' : '16px',
                     fontWeight: '600',
                     cursor: 'pointer',
                     display: 'flex',

@@ -17,13 +17,13 @@ const TourPackages = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-        const mobile = window.innerWidth < 768;
-        setIsMobile(mobile);
-        if (carouselRef.current) {
-            setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-        }
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (carouselRef.current) {
+        setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+      }
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     const timer = setTimeout(checkMobile, 500);
@@ -126,21 +126,21 @@ const TourPackages = () => {
       id="temple-tours"
       ref={ref}
       style={{
-        padding: isMobile ? '40px 0' : '80px 0',
+        padding: isMobile ? '35px 0' : '80px 0',
         backgroundColor: '#fefcf3',
         overflow: 'hidden'
       }}
     >
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '0 25px' : '0 40px' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '0 28px' : '0 40px' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          style={{ textAlign: 'center', marginBottom: '40px' }}
+          style={{ textAlign: 'center', marginBottom: isMobile ? '10px' : '35px' }}
         >
-        
+
           <h2 style={{
-            fontSize: isMobile ? '30px' : '45px',
+            fontSize: isMobile ? '24px' : '45px',
             fontWeight: '800',
             color: '#000000',
             marginBottom: '20px'
@@ -148,38 +148,38 @@ const TourPackages = () => {
             Temple Tour Packages
           </h2>
           <p style={{
-            fontSize: '18px',
+            fontSize: isMobile ? '16px' : '18px',
             color: '#78350f',
             maxWidth: '1200px',
             margin: '0 auto',
             lineHeight: '1.6',
-            textAlign: isMobile ?'justify':'center',
+            textAlign: isMobile ? 'justify' : 'center',
           }}>
             Sacred pilgrimage journeys to divine shrines with organized darshan, comfortable accommodation and spiritual experiences. Complete packages include AC transport with driver, temple entry arrangements, and guided tours to holy temples across India.
           </p>
         </motion.div>
       </div>
-      
+
       <motion.div
         ref={carouselRef}
         style={{
-            cursor: 'grab',
-            overflow: 'hidden',
-            paddingLeft: isMobile ? '20px' : '40px',
-            paddingRight: isMobile ? '20px' : '40px',
-            maxWidth: '1400px', 
-            margin: '0 auto'
+          cursor: 'grab',
+          overflow: 'hidden',
+          paddingLeft: isMobile ? '15px' : '40px',
+          paddingRight: isMobile ? '15px' : '40px',
+          maxWidth: '1450px',
+          margin: '0 auto'
         }}
       >
         <motion.div
-            drag="x"
-            dragConstraints={{ right: 0, left: -carouselWidth }}
-            whileTap={{ cursor: 'grabbing' }}
-            style={{
-                display: 'flex',
-                gap: '30px',
-                padding: '20px 5px',
-            }}
+          drag="x"
+          dragConstraints={{ right: 0, left: -carouselWidth }}
+          whileTap={{ cursor: 'grabbing' }}
+          style={{
+            display: 'flex',
+            gap: isMobile ? '10px' : '30px',
+            padding: isMobile ? '10px 5px' : '20px 5px',
+          }}
         >
           {packages.map((pkg, index) => (
             <motion.div
@@ -189,7 +189,7 @@ const TourPackages = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
               style={{
-                minWidth: isMobile ? '78vw' : '350px',
+                minWidth: isMobile ? '80vw' : '350px',
                 backgroundColor: '#ffffff',
                 borderRadius: '20px',
                 overflow: 'hidden',
@@ -199,7 +199,7 @@ const TourPackages = () => {
                 pointerEvents: 'auto'
               }}
             >
-              <div style={{ position: 'relative', height: isMobile ?'30vh':'250px', overflow: 'hidden', pointerEvents: 'none' }}>
+              <div style={{ position: 'relative', height: isMobile ? '30vh' : '250px', overflow: 'hidden', pointerEvents: 'none' }}>
                 <img
                   alt={`${pkg.destination} pilgrimage destination`}
                   src={pkg.image}
@@ -220,13 +220,13 @@ const TourPackages = () => {
                 }} />
                 <div style={{
                   position: 'absolute',
-                  top: '20px',
-                  right: '20px',
+                  top: isMobile ? '15px' : '20px',
+                  right: isMobile ? '15px' : '20px',
                   backgroundColor: 'rgba(217, 119, 6, 0.95)',
                   color: '#ffffff',
                   padding: '8px 16px',
                   borderRadius: '20px',
-                  fontSize: '13px',
+                  fontSize: isMobile ? '11px' : '13px',
                   fontWeight: '600',
                   backdropFilter: 'blur(10px)',
                   display: 'flex',
@@ -238,16 +238,16 @@ const TourPackages = () => {
                 </div>
               </div>
 
-              <div style={{ padding: isMobile ? '20px' :'30px' }}>
+              <div style={{ padding: isMobile ? '15px' : '30px' }}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
-                  marginBottom: '15px'
+                  marginBottom: isMobile ? '12px' : '15px'
                 }}>
-                  <Building2 size={24} color="#d97706" />
+                  <Building2 size={isMobile ? 20 : 24} color="#d97706" />
                   <h3 style={{
-                    fontSize: '1.3rem',
+                    fontSize: '1.2rem',
                     fontWeight: '700',
                     color: '#000000'
                   }}>
@@ -257,9 +257,9 @@ const TourPackages = () => {
 
                 <div style={{
                   backgroundColor: '#fef3c7',
-                  padding: '12px',
+                  padding: isMobile ? '8px' : '12px',
                   borderRadius: '10px',
-                  marginBottom: '15px',
+                  marginBottom: isMobile ? '10px' : '15px',
                   borderLeft: '3px solid #d97706'
                 }}>
                   <p style={{
@@ -284,10 +284,10 @@ const TourPackages = () => {
                 </div>
 
                 <p style={{
-                  fontSize: '14px',
+                  fontSize: '13px',
                   color: '#64748b',
-                  lineHeight: '1.5',
-                  marginBottom: '15px'
+                  lineHeight: '1.4',
+                  marginBottom: isMobile ? '12px' : '15px'
                 }}>
                   {pkg.description}
                 </p>
@@ -296,8 +296,8 @@ const TourPackages = () => {
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '8px',
-                  marginBottom: '20px',
-                  padding: '12px',
+                  marginBottom: isMobile ? '18px' : '20px',
+                  padding: isMobile ? '8px' : '12px',
                   backgroundColor: '#fef3c7',
                   borderRadius: '10px',
                 }}>
@@ -318,12 +318,12 @@ const TourPackages = () => {
                   onClick={() => handleEnquire(pkg)}
                   style={{
                     width: '100%',
-                    padding: isMobile ?'12px':'15px',
+                    padding: isMobile ? '11px' : '15px',
                     backgroundColor: '#d97706',
                     color: '#ffffff',
                     border: 'none',
                     borderRadius: '12px',
-                    fontSize: '16px',
+                    fontSize: isMobile ? '14px' : '16px',
                     fontWeight: '600',
                     cursor: 'pointer',
                     display: 'flex',

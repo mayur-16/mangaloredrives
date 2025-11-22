@@ -12,16 +12,16 @@ const PackageDetails = () => {
   const data = location.state?.package || location.state?.vehicle;
 
   React.useEffect(() => {
-     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-     checkMobile();
-     window.addEventListener('resize', checkMobile);
-     return () => window.removeEventListener('resize', checkMobile);
-   }, []);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
 
   const handleWhatsAppEnquiry = () => {
     let message = '';
-    
+
     if (type === 'rental') {
       message = `Hi! I'm interested in renting a ${data.name} (${data.passengers} passengers). Please provide more details and pricing.`;
     } else if (type === 'adventure') {
@@ -35,9 +35,9 @@ const PackageDetails = () => {
   };
 
   const getIcon = () => {
-    if (type === 'rental') return <Car size={isMobile?30:40} color="#0C516A" />;
-    if (type === 'adventure') return <Mountain size={isMobile?30:40} color="#0C516A" />;
-    if (type === 'tour') return <Building2 size={isMobile?30:40} color="#0C516A" />;
+    if (type === 'rental') return <Car size={isMobile ? 30 : 40} color="#0C516A" />;
+    if (type === 'adventure') return <Mountain size={isMobile ? 28 : 40} color="#0C516A" />;
+    if (type === 'tour') return <Building2 size={isMobile ? 28 : 40} color="#0C516A" />;
   };
 
   const getTitle = () => {
@@ -60,36 +60,36 @@ const PackageDetails = () => {
   ];
 
   const getPageSEO = () => {
-  const baseUrl = 'https://mangaloredrives.in';
-  
-  if (type === 'rental') {
-    return {
-      title: `${data.name} Rental in Mangalore - Book with Driver | Mangalore Drives`,
-      description: `Rent ${data.name} in Mangaluru with professional driver. ${data.description}. 24/7 available, best rates. Book AC vehicle for ${data.passengers} passengers.`,
-      keywords: `${data.name} rental mangalore, ${data.name} hire mangaluru, ${data.passengers} seater car rental, car with driver mangalore`,
-      canonicalUrl: `${baseUrl}/package/rental/${id}`,
-      ogImage: `${baseUrl}${data.icon}`
-    };
-  } else if (type === 'adventure') {
-    return {
-      title: `${data.destination} Trek Package - Trekking with Mangalore Drives`,
-      description: `${data.destination} trekking package from Mangaluru. ${data.description}. ${data.difficulty} trek. Duration: ${data.duration}. Best season: ${data.bestSeason}.`,
-      keywords: `${data.destination} trek, ${data.destination} trekking package, western ghats trek, trekking from mangalore, ${data.destination.toLowerCase()} trek booking`,
-      canonicalUrl: `${baseUrl}/package/adventure/${id}`,
-      ogImage: `${baseUrl}${data.image}`
-    };
-  } else if (type === 'tour') {
-    return {
-      title: `${data.destination} Tour Package from Mangalore - Temple Yatra`,
-      description: `${data.destination} darshan package from Mangaluru. Visit ${data.deity}. ${data.description}. Includes transport, accommodation & meals.`,
-      keywords: `${data.destination} package tour, ${data.destination} from mangalore, ${data.deity} darshan, temple tour package mangalore, ${data.destination.toLowerCase()} yatra`,
-      canonicalUrl: `${baseUrl}/package/tour/${id}`,
-      ogImage: `${baseUrl}${data.image}`
-    };
-  }
-};
+    const baseUrl = 'https://mangaloredrives.in';
 
-const pageSEO = getPageSEO();
+    if (type === 'rental') {
+      return {
+        title: `${data.name} Rental in Mangalore - Book with Driver | Mangalore Drives`,
+        description: `Rent ${data.name} in Mangaluru with professional driver. ${data.description}. 24/7 available, best rates. Book AC vehicle for ${data.passengers} passengers.`,
+        keywords: `${data.name} rental mangalore, ${data.name} hire mangaluru, ${data.passengers} seater car rental, car with driver mangalore`,
+        canonicalUrl: `${baseUrl}/package/rental/${id}`,
+        ogImage: `${baseUrl}${data.icon}`
+      };
+    } else if (type === 'adventure') {
+      return {
+        title: `${data.destination} Trek Package - Trekking with Mangalore Drives`,
+        description: `${data.destination} trekking package from Mangaluru. ${data.description}. ${data.difficulty} trek. Duration: ${data.duration}. Best season: ${data.bestSeason}.`,
+        keywords: `${data.destination} trek, ${data.destination} trekking package, western ghats trek, trekking from mangalore, ${data.destination.toLowerCase()} trek booking`,
+        canonicalUrl: `${baseUrl}/package/adventure/${id}`,
+        ogImage: `${baseUrl}${data.image}`
+      };
+    } else if (type === 'tour') {
+      return {
+        title: `${data.destination} Tour Package from Mangalore - Temple Yatra`,
+        description: `${data.destination} darshan package from Mangaluru. Visit ${data.deity}. ${data.description}. Includes transport, accommodation & meals.`,
+        keywords: `${data.destination} package tour, ${data.destination} from mangalore, ${data.deity} darshan, temple tour package mangalore, ${data.destination.toLowerCase()} yatra`,
+        canonicalUrl: `${baseUrl}/package/tour/${id}`,
+        ogImage: `${baseUrl}${data.image}`
+      };
+    }
+  };
+
+  const pageSEO = getPageSEO();
 
   return (
     <>
@@ -101,7 +101,7 @@ const pageSEO = getPageSEO();
         padding: '40px 20px'
       }}>
         <div style={{
-          maxWidth: isMobile?'100%':'80vw',
+          maxWidth: isMobile ? '100%' : '80vw',
           margin: '0 auto'
         }}>
           <motion.button
@@ -114,7 +114,7 @@ const pageSEO = getPageSEO();
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
-              padding: isMobile?'9px 18px':'12px 24px',
+              padding: isMobile ? '9px 18px' : '12px 24px',
               backgroundColor: '#ffffff',
               border: '2px solid #e2e8f0',
               borderRadius: '12px',
@@ -143,29 +143,29 @@ const pageSEO = getPageSEO();
           >
             {type !== 'rental' && data?.image && (
               <div style={{
-                height: isMobile?'35vh':'50vh',
+                height: isMobile ? '35vh' : '50vh',
                 overflow: 'hidden',
                 position: 'relative'
               }}>
                 <img
                   alt={`${data.destination} destination`}
-                  loading="eager" 
+                  loading="eager"
                   style={{
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover'
                   }}
-                  src={data.image}/>
+                  src={data.image} />
                 {type === 'adventure' && data?.difficulty && (
                   <div style={{
                     position: 'absolute',
-                    top: isMobile?'10px':'30px',
-                    right: isMobile?'10px':'30px',
+                    top: isMobile ? '10px' : '30px',
+                    right: isMobile ? '10px' : '30px',
                     backgroundColor: 'rgba(12, 81, 106, 0.95)',
                     color: '#ffffff',
-                    padding: isMobile?'9px 20px':'12px 24px',
+                    padding: isMobile ? '9px 20px' : '12px 24px',
                     borderRadius: '30px',
-                    fontSize: isMobile?'12px':'16px',
+                    fontSize: isMobile ? '12px' : '16px',
                     fontWeight: '700',
                     backdropFilter: 'blur(10px)'
                   }}>
@@ -177,7 +177,7 @@ const pageSEO = getPageSEO();
 
             {type === 'rental' && data?.icon && (
               <div style={{
-                height: isMobile?'30vh':'40vh',
+                height: isMobile ? '30vh' : '40vh',
                 overflow: 'hidden',
                 position: 'relative'
               }}>
@@ -192,18 +192,18 @@ const pageSEO = getPageSEO();
                   }}
                   alt={`${data.name}`}
                   src={data.icon}
-                  loading="eager" 
+                  loading="eager"
                   style={{
                     width: '100%',
                     height: '100%',
                     objectFit: 'contain',
                   }}
                 />
-               
+
               </div>
             )}
 
-            <div style={{ padding: isMobile?'20px':'50px' }}>
+            <div style={{ padding: isMobile ? '20px' : '50px' }}>
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -212,7 +212,7 @@ const pageSEO = getPageSEO();
               }}>
                 {getIcon()}
                 <h1 style={{
-                  fontSize: isMobile?'25px':'1.8rem',
+                  fontSize: isMobile ? '23px' : '1.8rem',
                   fontWeight: '800',
                   color: '#000000'
                 }}>
@@ -225,11 +225,11 @@ const pageSEO = getPageSEO();
                   backgroundColor: '#f0f9ff',
                   padding: '20px',
                   borderRadius: '16px',
-                  marginBottom: '30px',
+                  marginBottom: isMobile ? '25px' : '30px',
                   borderLeft: '4px solid #0C516A'
                 }}>
                   <p style={{
-                    fontSize: '18px',
+                    fontSize: isMobile ? '15.5px' : '18px',
                     fontWeight: '700',
                     color: '#0C516A',
                     marginBottom: '8px'
@@ -237,7 +237,7 @@ const pageSEO = getPageSEO();
                     {data.specialty}
                   </p>
                   <p style={{
-                    fontSize: '16px',
+                    fontSize: isMobile ? '14px' : '16px',
                     color: '#334155',
                     lineHeight: '1.6'
                   }}>
@@ -251,7 +251,7 @@ const pageSEO = getPageSEO();
                   backgroundColor: '#fef3c7',
                   padding: '20px',
                   borderRadius: '16px',
-                  marginBottom: '30px',
+                  marginBottom: isMobile ? '25px' : '30px',
                   borderLeft: '4px solid #d97706'
                 }}>
                   <div style={{
@@ -260,9 +260,9 @@ const pageSEO = getPageSEO();
                     gap: '8px',
                     marginBottom: '10px'
                   }}>
-                    <span style={{ fontSize: '24px' }}>🙏</span>
+                    <span style={{ fontSize: isMobile ? '20px' : '24px' }}>🙏</span>
                     <p style={{
-                      fontSize: '18px',
+                      fontSize: isMobile ? '15.5' : '18px',
                       fontWeight: '700',
                       color: '#d97706'
                     }}>
@@ -278,9 +278,9 @@ const pageSEO = getPageSEO();
                     {data.significance}
                   </p>
                   <p style={{
-                    fontSize: '16px',
+                    fontSize: isMobile ? '14.5' : '16px',
                     color: '#334155',
-                    lineHeight: '1.6'
+                    lineHeight: '1.5'
                   }}>
                     {data.description}
                   </p>
@@ -292,17 +292,17 @@ const pageSEO = getPageSEO();
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
                   gap: '15px',
-                  marginBottom: '30px'
+                  marginBottom: isMobile ? '25px' : '30px'
                 }}>
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
-                    padding: '15px',
+                    padding: isMobile ? '13px' : '15px',
                     backgroundColor: '#fef3c7',
                     borderRadius: '12px'
                   }}>
-                    <Clock size={24} color="#92400e" />
+                    <Clock size={isMobile ? 20 : 24} color="#92400e" />
                     <div>
                       <p style={{ fontSize: '12px', color: '#78350f', marginBottom: '2px' }}>Duration</p>
                       <p style={{ fontSize: '16px', fontWeight: '600', color: '#92400e' }}>{data.duration}</p>
@@ -312,11 +312,11 @@ const pageSEO = getPageSEO();
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
-                    padding: '15px',
+                    padding: isMobile ? '13px' : '15px',
                     backgroundColor: '#dcfce7',
                     borderRadius: '12px'
                   }}>
-                    <Calendar size={24} color="#166534" />
+                    <Calendar size={isMobile ? 20 : 24} color="#166534" />
                     <div>
                       <p style={{ fontSize: '12px', color: '#15803d', marginBottom: '2px' }}>Best Season</p>
                       <p style={{ fontSize: '16px', fontWeight: '600', color: '#166534' }}>{data.bestSeason}</p>
@@ -330,17 +330,17 @@ const pageSEO = getPageSEO();
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
                   gap: '15px',
-                  marginBottom: '30px'
+                  marginBottom: isMobile ? '25px' : '30px'
                 }}>
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
-                    padding: '15px',
+                    padding: isMobile ? '13px' : '15px',
                     backgroundColor: '#fef3c7',
                     borderRadius: '12px'
                   }}>
-                    <Clock size={24} color="#92400e" />
+                    <Clock size={isMobile ? 20 : 24} color="#92400e" />
                     <div>
                       <p style={{ fontSize: '12px', color: '#78350f', marginBottom: '2px' }}>Duration</p>
                       <p style={{ fontSize: '16px', fontWeight: '600', color: '#92400e' }}>{data.duration}</p>
@@ -350,11 +350,11 @@ const pageSEO = getPageSEO();
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
-                    padding: '15px',
+                    padding: isMobile ? '13px' : '15px',
                     backgroundColor: '#fef9c3',
                     borderRadius: '12px'
                   }}>
-                    <Calendar size={24} color="#d97706" />
+                    <Calendar size={isMobile ? 20 : 24} color="#d97706" />
                     <div>
                       <p style={{ fontSize: '12px', color: '#92400e', marginBottom: '2px' }}>Best Season</p>
                       <p style={{ fontSize: '16px', fontWeight: '600', color: '#d97706' }}>{data.bestSeason}</p>
@@ -368,12 +368,12 @@ const pageSEO = getPageSEO();
                   display: 'flex',
                   alignItems: 'center',
                   gap: '15px',
-                  padding: isMobile?'15px 10px':'20px',
+                  padding: isMobile ? '12px 11px' : '20px',
                   backgroundColor: '#e6f2f7',
                   borderRadius: '16px',
-                  marginBottom: '40px'
+                  marginBottom: isMobile ? '30px' : '40px'
                 }}>
-                  <Users size={isMobile?28:32} color="#0C516A" />
+                  <Users size={isMobile ? 28 : 32} color="#0C516A" />
                   <div>
                     <span style={{
                       fontSize: '14px',
@@ -384,7 +384,7 @@ const pageSEO = getPageSEO();
                       Passenger Capacity
                     </span>
                     <span style={{
-                      fontSize: isMobile?'18px':'24px',
+                      fontSize: isMobile ? '18px' : '24px',
                       fontWeight: '700',
                       color: '#0C516A'
                     }}>
@@ -398,7 +398,7 @@ const pageSEO = getPageSEO();
                 <>
                   <div style={{ marginBottom: '40px' }}>
                     <h2 style={{
-                      fontSize: isMobile?'20px':'24px',
+                      fontSize: isMobile ? '20px' : '24px',
                       fontWeight: '700',
                       color: '#000000',
                       marginBottom: '20px'
@@ -408,7 +408,7 @@ const pageSEO = getPageSEO();
                     <div style={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                      gap: '15px'
+                      gap: isMobile ? '13px' : '15px'
                     }}>
                       {commonFacilities.map((facility, idx) => {
                         const IconComponent = facility.icon;
@@ -417,7 +417,7 @@ const pageSEO = getPageSEO();
                             display: 'flex',
                             alignItems: 'center',
                             gap: '12px',
-                            padding: isMobile?'12px':'15px',
+                            padding: isMobile ? '12px' : '15px',
                             backgroundColor: '#f0fdf4',
                             borderRadius: '12px',
                             border: '1px solid #86efac'
@@ -437,9 +437,9 @@ const pageSEO = getPageSEO();
                   </div>
 
                   {data?.highlights && (
-                    <div style={{ marginBottom: '40px' }}>
+                    <div style={{ marginBottom: isMobile ? '30px' : '40px' }}>
                       <h2 style={{
-                        fontSize: isMobile?'20px':'24px',
+                        fontSize: isMobile ? '20px' : '24px',
                         fontWeight: '700',
                         color: '#000000',
                         marginBottom: '20px'
@@ -456,14 +456,14 @@ const pageSEO = getPageSEO();
                             display: 'flex',
                             alignItems: 'center',
                             gap: '12px',
-                            padding: isMobile?'12px':'15px',
+                            padding: isMobile ? '11px' : '15px',
                             backgroundColor: '#f8fafc',
                             borderRadius: '12px',
                             border: '1px solid #e2e8f0'
                           }}>
                             <CheckCircle2 size={20} color="#0C516A" style={{ marginTop: '2px', flexShrink: 0 }} />
                             <span style={{
-                              fontSize: '16px',
+                              fontSize: isMobile ? '13px' : '16px',
                               color: '#334155',
                               lineHeight: '1.6'
                             }}>
@@ -477,10 +477,10 @@ const pageSEO = getPageSEO();
 
                   {data?.enroute && data.enroute.length > 0 && (
                     <div style={{
-                      padding: isMobile?'16px':'25px',
+                      padding: isMobile ? '16px' : '25px',
                       backgroundColor: '#fef3c7',
                       borderRadius: '16px',
-                      marginBottom: isMobile?'20px':'30px',
+                      marginBottom: isMobile ? '20px' : '30px',
                       border: '2px solid #fbbf24'
                     }}>
                       <div style={{
@@ -489,9 +489,9 @@ const pageSEO = getPageSEO();
                         gap: '10px',
                         marginBottom: '15px'
                       }}>
-                        <MapPin size={isMobile?20:24} color="#92400e" />
+                        <MapPin size={isMobile ? 20 : 24} color="#92400e" />
                         <h3 style={{
-                          fontSize: isMobile?'17px':'20px',
+                          fontSize: isMobile ? '16px' : '20px',
                           fontWeight: '700',
                           color: '#92400e'
                         }}>
@@ -505,10 +505,10 @@ const pageSEO = getPageSEO();
                       }}>
                         {data.enroute.map((place, idx) => (
                           <div key={idx} style={{
-                            padding: isMobile?'8px 14px':'10px 18px',
+                            padding: isMobile ? '8px 14px' : '10px 18px',
                             backgroundColor: '#fef9c3',
                             borderRadius: '20px',
-                            fontSize: '15px',
+                            fontSize: isMobile ? '13px' : '15px',
                             color: '#78350f',
                             fontWeight: '500',
                             border: '1px solid #fde047'
@@ -523,9 +523,9 @@ const pageSEO = getPageSEO();
               )}
 
               {data?.features && type !== 'adventure' && (
-                <div style={{ marginBottom: isMobile?'25px':'30px' }}>
+                <div style={{ marginBottom: isMobile ? '25px' : '30px' }}>
                   <h2 style={{
-                    fontSize: isMobile?'20px':'24px',
+                    fontSize: isMobile ? '20px' : '24px',
                     fontWeight: '700',
                     color: '#000000',
                     marginBottom: '20px'
@@ -535,14 +535,14 @@ const pageSEO = getPageSEO();
                   <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                    gap: '15px'
+                    gap: isMobile ? '13px' : '15px'
                   }}>
                     {data.features.map((feature, idx) => (
                       <div key={idx} style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px',
-                        padding: isMobile?'12px':'15px',
+                        padding: isMobile ? '12px' : '15px',
                         backgroundColor: type === 'tour' ? '#fef9c3' : '#f8fafc',
                         borderRadius: '12px',
                         border: type === 'tour' ? '1px solid #fde047' : '1px solid #e2e8f0'
@@ -562,7 +562,7 @@ const pageSEO = getPageSEO();
               )}
 
               {type === 'tour' && data?.highlights && (
-                <div style={{ marginBottom: isMobile?'30px':'35px' }}>
+                <div style={{ marginBottom: isMobile ? '30px' : '35px' }}>
                   <h2 style={{
                     fontSize: '24px',
                     fontWeight: '700',
@@ -572,7 +572,7 @@ const pageSEO = getPageSEO();
                     alignItems: 'center',
                     gap: '10px'
                   }}>
-                    <span style={{ fontSize: '28px' }}>✨</span>
+                    <span style={{ fontSize: isMobile ? '24px' : '28px' }}>✨</span>
                     Spiritual Highlights
                   </h2>
                   <div style={{
@@ -585,16 +585,16 @@ const pageSEO = getPageSEO();
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px',
-                        padding: isMobile?'12px':'15px',
+                        padding: isMobile ? '12px' : '15px',
                         backgroundColor: '#fefcf3',
                         borderRadius: '12px',
                         border: '1px solid #fed7aa'
                       }}>
                         <span style={{ fontSize: '18px', flexShrink: 0 }}>🕉️</span>
                         <span style={{
-                          fontSize: '16px',
+                          fontSize: isMobile ? '14.5px' : '16px',
                           color: '#334155',
-                          lineHeight: '1.6'
+                          lineHeight: '1.55'
                         }}>
                           {highlight}
                         </span>
@@ -606,10 +606,10 @@ const pageSEO = getPageSEO();
 
               {type === 'tour' && data?.enroute && data.enroute.length > 0 && (
                 <div style={{
-                  padding: isMobile?'16px':'25px',
+                  padding: isMobile ? '16px' : '25px',
                   backgroundColor: '#fef3c7',
                   borderRadius: '16px',
-                  marginBottom: isMobile?'25px':'30px',
+                  marginBottom: isMobile ? '25px' : '30px',
                   border: '2px solid #fbbf24'
                 }}>
                   <div style={{
@@ -618,9 +618,9 @@ const pageSEO = getPageSEO();
                     gap: '10px',
                     marginBottom: '15px'
                   }}>
-                    <MapPin size={24} color="#92400e" />
+                    <MapPin size={isMobile ? 20 : 24} color="#92400e" />
                     <h3 style={{
-                      fontSize: isMobile?'17px':'20px',
+                      fontSize: isMobile ? '16px' : '20px',
                       fontWeight: '700',
                       color: '#92400e'
                     }}>
@@ -634,10 +634,10 @@ const pageSEO = getPageSEO();
                   }}>
                     {data.enroute.map((place, idx) => (
                       <div key={idx} style={{
-                        padding: isMobile?'8px 14px':'10px 18px',
+                        padding: isMobile ? '8px 14px' : '10px 18px',
                         backgroundColor: '#fef9c3',
                         borderRadius: '20px',
-                        fontSize: '15px',
+                        fontSize: isMobile ? '13px' : '15px',
                         color: '#78350f',
                         fontWeight: '500',
                         border: '1px solid #fde047',
@@ -645,7 +645,7 @@ const pageSEO = getPageSEO();
                         alignItems: 'center',
                         gap: '6px'
                       }}>
-                        <span style={{ fontSize: '16px' }}>🛕</span>
+                        <span style={{ fontSize: isMobile ? '14px' : '16px' }}>🛕</span>
                         {place}
                       </div>
                     ))}
@@ -654,14 +654,14 @@ const pageSEO = getPageSEO();
               )}
 
               <div style={{
-                padding: isMobile?'18px':'26px',
+                padding: isMobile ? '17px' : '26px',
                 backgroundColor: '#dbeafe',
                 borderRadius: '16px',
-                marginBottom: isMobile?'30px':'40px',
+                marginBottom: isMobile ? '30px' : '40px',
                 border: '2px solid #93c5fd'
               }}>
                 <p style={{
-                  fontSize: '16px',
+                  fontSize: isMobile ? '14px' : '16px',
                   color: '#1e40af',
                   lineHeight: '1.6',
                   marginBottom: '10px'
@@ -681,7 +681,7 @@ const pageSEO = getPageSEO();
                   color: '#ffffff',
                   border: 'none',
                   borderRadius: '16px',
-                  fontSize: isMobile?'15px':'18px',
+                  fontSize: isMobile ? '15px' : '18px',
                   fontWeight: '700',
                   cursor: 'pointer',
                   display: 'flex',
@@ -694,7 +694,7 @@ const pageSEO = getPageSEO();
                 onMouseEnter={(e) => e.target.style.backgroundColor = '#20BA5A'}
                 onMouseLeave={(e) => e.target.style.backgroundColor = '#25D366'}
               >
-                <MessageCircle size={isMobile?20:24} />
+                <MessageCircle size={isMobile ? 20 : 24} />
                 Enquire Now on WhatsApp
               </motion.button>
             </div>
