@@ -1,27 +1,41 @@
 .
 ├── .gitignore
 ├── README.md
+├── convert-to-webp.cjs
 ├── index.html
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.js
+├── public
+│   ├── apple-touch-icon.png
+│   ├── favicon-96x96.png
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   ├── og-image.webp
+│   ├── robots.txt
+│   └── sitemap.xml
 ├── src
 │   ├── App.jsx
 │   ├── assets
-│   │   ├── kudure-mukha.jpeg
-│   │   ├── kumara-parvatha.jpg
+│   │   ├── kudure-mukha.webp
+│   │   ├── kumara-parvatha.webp
 │   │   ├── logos
-│   │   │   ├── 5seatercar.jpg
-│   │   │   ├── 7seatercar.jpg
-│   │   │   ├── 8seatercar.jpg
-│   │   │   ├── bus.png
-│   │   │   └── mangalore_drives_logo.png
-│   │   ├── mantralaya.jpg
-│   │   ├── netravathi-peak.jpeg
-│   │   ├── shabhari_malai_temple.jpg
-│   │   ├── shirdi_temple.jpg
-│   │   ├── thenomadway_logo.jpeg
-│   │   └── thirupathi_temple.jpg
+│   │   │   ├── 5seatercar.webp
+│   │   │   ├── 7seatercar.webp
+│   │   │   ├── 8seatercar.webp
+│   │   │   ├── bus.webp
+│   │   │   ├── mangalore_drives_logo.webp
+│   │   │   └── mangalore_drives_logo_png.png
+│   │   ├── mantralaya.webp
+│   │   ├── netravathi-peak.webp
+│   │   ├── shabhari_malai_temple.webp
+│   │   ├── shirdi_temple.webp
+│   │   ├── thenomadway_logo.webp
+│   │   └── thirupathi_temple.webp
 │   ├── components
 │   │   ├── AdventurePackages.jsx
 │   │   ├── CallToAction.jsx
@@ -30,6 +44,7 @@
 │   │   ├── Hero.jsx
 │   │   ├── HeroImage.jsx
 │   │   ├── Rentals.jsx
+│   │   ├── SEOHead.jsx
 │   │   ├── TourPackages.jsx
 │   │   ├── WelcomeMessage.jsx
 │   │   └── ui
@@ -47,6 +62,8 @@
 │       └── PackageDetails.jsx
 ├── structure.txt
 ├── tailwind.config.js
+├── tools
+│   └── generate-sitemap.js
 └── vite.config.js
 
-9 directories, 41 files
+11 directories, 56 files

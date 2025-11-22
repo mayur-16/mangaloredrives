@@ -2,10 +2,10 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Users, ArrowRight, MapPin, CheckCircle2, Shield, Clock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import car5Seater from '@/assets/logos/5seatercar.jpg';
-import car7Seater from '@/assets/logos/7seatercar.jpg';
-import car8Seater from '@/assets/logos/8seatercar.jpg';
-import busIcon from '@/assets/logos/bus.png';
+import car5Seater from '@/assets/logos/5seatercar.webp';
+import car7Seater from '@/assets/logos/7seatercar.webp';
+import car8Seater from '@/assets/logos/8seatercar.webp';
+import busIcon from '@/assets/logos/bus.webp';
 
 const useInView = (options = {}) => {
   const [isInView, setIsInView] = React.useState(false);
@@ -231,6 +231,7 @@ const Rentals = () => {
                   }}
                   alt={`${vehicle.name}`}
                   src={vehicle.icon}
+                  loading="lazy"
                   style={{
                     width: '80%',
                     height: '80%',

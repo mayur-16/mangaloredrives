@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { Mountain, ArrowRight, MapPin, Clock, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import netravathiPeak from '@/assets/netravathi-peak.jpeg';
-import kumaraParvatha from '@/assets/kumara-parvatha.jpg';
-import kudureMukha from '@/assets/kudure-mukha.jpeg';
-import thenomadwayLogo from '@/assets/thenomadway_logo.jpeg';
+import netravathiPeak from '@/assets/netravathi-peak.webp';
+import kumaraParvatha from '@/assets/kumara-parvatha.webp';
+import kudureMukha from '@/assets/kudure-mukha.webp';
+import thenomadwayLogo from '@/assets/thenomadway_logo.webp';
+import ranijhari from '@/assets/Rani_jhari.webp';
 
 const AdventurePackages = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -94,7 +95,7 @@ const AdventurePackages = () => {
     {
       id: 4,
       destination: 'Ranijhari Falls',
-      image: netravathiPeak,
+      image: ranijhari,
       specialty: 'Hidden Waterfall Paradise',
       description: 'Discover the secret cascade in deep forests',
       enroute: ['Dharmasthala Temple', 'Charmadi Ghat Viewpoint'],
@@ -160,6 +161,7 @@ const AdventurePackages = () => {
               <img
                 src={thenomadwayLogo}
                 alt="The Nomad Way Adventure Tours Logo"
+                loading="lazy"
                 style={{
                   height: '3rem',
                   width: 'auto'
@@ -222,6 +224,7 @@ const AdventurePackages = () => {
                 <img
                   alt={`${pkg.destination} trekking destination`}
                   src={pkg.image}
+                  loading="lazy" 
                   style={{
                     width: '100%',
                     height: '100%',

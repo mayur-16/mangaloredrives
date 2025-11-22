@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { Building2, ArrowRight, MapPin, Calendar, Users, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import tirupathiTemple from '@/assets/thirupathi_temple.jpg';
-import mantralayaTemple from '@/assets/mantralaya.jpg';
-import sabarimalaTemple from '@/assets/shabhari_malai_temple.jpg';
-import shirdiTemple from '@/assets/shirdi_temple.jpg';
+import tirupathiTemple from '@/assets/thirupathi_temple.webp';
+import mantralayaTemple from '@/assets/mantralaya.webp';
+import sabarimalaTemple from '@/assets/shabhari_malai_temple.webp';
+import shirdiTemple from '@/assets/shirdi_temple.webp';
 
 const TourPackages = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -203,6 +203,7 @@ const TourPackages = () => {
                 <img
                   alt={`${pkg.destination} pilgrimage destination`}
                   src={pkg.image}
+                  loading="lazy"
                   style={{
                     width: '100%',
                     height: '100%',

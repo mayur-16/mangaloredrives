@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import SEOHead from '@/components/SEOHead'; // Create this new component
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Rentals from '@/components/Rentals';
@@ -33,10 +33,7 @@ function App() {
 
   return (
     <>
-      <Helmet>
-        <title>Mangalore Drives - Car Rentals & Adventure Tours in Mangaluru</title>
-        <meta name="description" content="Premium car rental services and adventure tour packages in Mangaluru. Rent cars, tempo travellers, mini buses with drivers. Book trekking and temple tour packages." />
-      </Helmet>
+      <SEOHead />
       <div style={{ backgroundColor: '#ffffff' }}>
         <Header activeSection={activeSection} />
         <Hero />

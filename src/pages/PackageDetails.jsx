@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import SEOHead from '@/components/SEOHead';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft, MessageCircle, Users, Mountain, Building2, Car, Shield, User, CheckCircle2, MapPin, Calendar, Clock } from 'lucide-react';
@@ -59,12 +59,41 @@ const PackageDetails = () => {
     { icon: CheckCircle2, text: 'Traditional Vegetarian Meals' },
   ];
 
+  const getPageSEO = () => {
+  const baseUrl = 'https://mangaloredrives.in';
+  
+  if (type === 'rental') {
+    return {
+      title: `${data.name} Rental in Mangalore - Book with Driver | Mangalore Drives`,
+      description: `Rent ${data.name} in Mangaluru with professional driver. ${data.description}. 24/7 available, best rates. Book AC vehicle for ${data.passengers} passengers.`,
+      keywords: `${data.name} rental mangalore, ${data.name} hire mangaluru, ${data.passengers} seater car rental, car with driver mangalore`,
+      canonicalUrl: `${baseUrl}/package/rental/${id}`,
+      ogImage: `${baseUrl}${data.icon}`
+    };
+  } else if (type === 'adventure') {
+    return {
+      title: `${data.destination} Trek Package - Trekking with Mangalore Drives`,
+      description: `${data.destination} trekking package from Mangaluru. ${data.description}. ${data.difficulty} trek. Duration: ${data.duration}. Best season: ${data.bestSeason}.`,
+      keywords: `${data.destination} trek, ${data.destination} trekking package, western ghats trek, trekking from mangalore, ${data.destination.toLowerCase()} trek booking`,
+      canonicalUrl: `${baseUrl}/package/adventure/${id}`,
+      ogImage: `${baseUrl}${data.image}`
+    };
+  } else if (type === 'tour') {
+    return {
+      title: `${data.destination} Tour Package from Mangalore - Temple Yatra`,
+      description: `${data.destination} darshan package from Mangaluru. Visit ${data.deity}. ${data.description}. Includes transport, accommodation & meals.`,
+      keywords: `${data.destination} package tour, ${data.destination} from mangalore, ${data.deity} darshan, temple tour package mangalore, ${data.destination.toLowerCase()} yatra`,
+      canonicalUrl: `${baseUrl}/package/tour/${id}`,
+      ogImage: `${baseUrl}${data.image}`
+    };
+  }
+};
+
+const pageSEO = getPageSEO();
+
   return (
     <>
-      <Helmet>
-        <title>{getTitle()} - Mangalore Drives</title>
-        <meta name="description" content={`Book ${getTitle()} with Mangalore Drives. Premium service with professional drivers and complete packages.`} />
-      </Helmet>
+      <SEOHead {...pageSEO} pageType="product" />
 
       <div style={{
         minHeight: '100vh',
@@ -120,6 +149,7 @@ const PackageDetails = () => {
               }}>
                 <img
                   alt={`${data.destination} destination`}
+                  loading="eager" 
                   style={{
                     width: '100%',
                     height: '100%',
@@ -162,6 +192,7 @@ const PackageDetails = () => {
                   }}
                   alt={`${data.name}`}
                   src={data.icon}
+                  loading="eager" 
                   style={{
                     width: '100%',
                     height: '100%',

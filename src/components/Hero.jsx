@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { MapPin, Phone, Mail } from 'lucide-react';
-import logoImage from '@/assets/logos/mangalore_drives_logo.png';
+import logoImage from '@/assets/logos/mangalore_drives_logo.webp';
 
 const Hero = () => {
   const [ref, isInView] = useInView({
@@ -60,15 +60,18 @@ const Hero = () => {
         flexDirection: 'column',
         alignItems: isMobile ? 'center' : 'flex-start'
       }}>
-          <img alt="Mangalore Drives logo" style={{
-          width: '180px',
+          <img 
+          alt="Mangalore Drives logo"
+           loading="eager" 
+            style={{
+          width: isMobile ?'30vw':'180px',
           height: 'auto',
           marginBottom: '30px',
           borderRadius: '20px',
         }} src={logoImage} />
 
           <h1 style={{
-          fontSize: isMobile ? '48px' : '56px',
+          fontSize: isMobile ? '42px' : '56px',
           fontWeight: '800',
           color: '#ffffff',
           marginBottom: '20px',
@@ -77,7 +80,7 @@ const Hero = () => {
             Mangalore Drives
           </h1>
           <p style={{
-          fontSize: isMobile ? '18px' : '20px',
+          fontSize: isMobile ? '17px' : '20px',
           color: 'rgba(255, 255, 255, 0.9)',
           marginBottom: '40px',
           lineHeight: '1.6',
@@ -97,10 +100,10 @@ const Hero = () => {
             alignItems: 'center',
             gap: '12px'
           }}>
-              <MapPin size={24} color="#ffffff" />
+              <MapPin size={isMobile ?20:24} color="#ffffff" />
               <span style={{
               color: '#ffffff',
-              fontSize: '16px'
+              fontSize: isMobile ?'14px':'16px'
             }}>Mangaluru, Karnataka</span>
             </div>    
           </div>
@@ -123,7 +126,7 @@ const Hero = () => {
           <div style={{
           backgroundColor: 'rgba(255, 255, 255, 0.15)',
           backdropFilter: 'blur(10px)',
-          padding: '30px',
+          padding: isMobile ?'20px':'30px',
           borderRadius: '20px',
           border: '1px solid rgba(255, 255, 255, 0.2)'
         }}>

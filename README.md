@@ -9,7 +9,6 @@ how to build structure.txt
 ls -R > structure.txt or 
 tree -a -I 'node_modules|__pycache__|public|dist|build|.git' > structure.txt
 
-
 npm run dev
 
 

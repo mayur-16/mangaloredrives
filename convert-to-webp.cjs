@@ -3,7 +3,7 @@ const sharp = require('sharp');
 const fs = require('fs').promises;
 const path = require('path');
 
-async function convertToWebP(inputDir = 'src/assets', outputDir = 'src/assets/webp') {
+async function convertToWebP(inputDir = 'src/assets', outputDir = 'src/assets') {
   // ← This line creates the webp folder if it doesn't exist
   await fs.mkdir(outputDir, { recursive: true });
 
@@ -21,7 +21,7 @@ async function convertToWebP(inputDir = 'src/assets', outputDir = 'src/assets/we
       console.log(`Converted → ${path.basename(outputPath)}`);
     }
   }
-  console.log('All images converted to WebP! Check src/assets/webp/');
+  console.log('All images converted to WebP! Check src/assets/');
 }
 
 convertToWebP();
