@@ -409,4 +409,5 @@ const Rentals = () => {
   );
 };
 
+export { vehicles };
 export default Rentals;

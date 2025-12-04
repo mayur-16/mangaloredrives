@@ -347,4 +347,5 @@ const TourPackages = () => {
   );
 };
 
+export { packages };
 export default TourPackages;

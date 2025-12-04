@@ -343,4 +343,6 @@ const AdventurePackages = () => {
   );
 };
 
+
+export { packages };
 export default AdventurePackages;

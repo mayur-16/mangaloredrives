@@ -10,6 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/package/:type/:id" element={<PackageDetails />} />
+      <Route path="/not-found" element={<NotFound />} />
     </Routes>
   </BrowserRouter>
 );
