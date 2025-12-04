@@ -8,33 +8,8 @@ import mantralayaTemple from '@/assets/mantralaya.webp';
 import sabarimalaTemple from '@/assets/shabhari_malai_temple.webp';
 import shirdiTemple from '@/assets/shirdi_temple.webp';
 
-const TourPackages = () => {
-  const [ref, isInView] = useInView({ threshold: 0.1 });
-  const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(false);
-  const [carouselWidth, setCarouselWidth] = useState(0);
-  const carouselRef = useRef();
 
-  useEffect(() => {
-    const checkMobile = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      if (carouselRef.current) {
-        setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-      }
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    const timer = setTimeout(checkMobile, 500);
-
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-      clearTimeout(timer);
-    };
-  }, [isInView]);
-
-  const packages = [
+ const packages = [
     {
       id: 1,
       destination: 'Tirupati Balaji Temple',
@@ -116,6 +91,34 @@ const TourPackages = () => {
       bestSeason: 'October to March'
     }
   ];
+
+const TourPackages = () => {
+  const [ref, isInView] = useInView({ threshold: 0.1 });
+  const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
+  const [carouselWidth, setCarouselWidth] = useState(0);
+  const carouselRef = useRef();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (carouselRef.current) {
+        setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    const timer = setTimeout(checkMobile, 500);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      clearTimeout(timer);
+    };
+  }, [isInView]);
+
+ 
 
   const handleEnquire = (pkg) => {
     navigate(`/package/tour/${pkg.id}`, { state: { package: pkg } });
