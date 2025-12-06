@@ -36,6 +36,32 @@ const useInView = (options = {}) => {
   return [ref, isInView];
 };
 
+const Rentals = () => {
+  const [ref, isInView] = useInView({ threshold: 0.1 });
+  const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
+  const [carouselWidth, setCarouselWidth] = useState(0);
+  const carouselRef = useRef();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (carouselRef.current) {
+        setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    const timer = setTimeout(checkMobile, 500);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      clearTimeout(timer);
+    };
+  }, [isInView]);
+
   const vehicles = [
     {
       id: 1,
@@ -102,34 +128,6 @@ const useInView = (options = {}) => {
       availability: 'Advance Booking Required'
     }
   ];
-
-const Rentals = () => {
-  const [ref, isInView] = useInView({ threshold: 0.1 });
-  const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(false);
-  const [carouselWidth, setCarouselWidth] = useState(0);
-  const carouselRef = useRef();
-
-  useEffect(() => {
-    const checkMobile = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      if (carouselRef.current) {
-        setCarouselWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-      }
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    const timer = setTimeout(checkMobile, 500);
-
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-      clearTimeout(timer);
-    };
-  }, [isInView]);
-
-
 
   const handleEnquire = (vehicle) => {
     navigate(`/package/rental/${vehicle.id}`, { state: { vehicle } });
@@ -411,5 +409,4 @@ const Rentals = () => {
   );
 };
 
-export { vehicles };
 export default Rentals;

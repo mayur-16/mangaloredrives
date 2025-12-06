@@ -9,84 +9,6 @@ import kudureMukha from '@/assets/kudure-mukha.webp';
 import thenomadwayLogo from '@/assets/thenomadway_logo.webp';
 import ranijhari from '@/assets/Rani_jhari.webp';
 
-const packages = [
-  {
-    id: 1,
-    destination: 'Netravathi Peak',
-    image: netravathiPeak,
-    specialty: 'Sunset & Sunrise Views',
-    description: 'Experience breathtaking 360° views of Western Ghats',
-    enroute: ['Kukke Subramanya Temple', 'Somwarpet Forest'],
-    highlights: [
-      'Highest peak in Pushpagiri range at 1,800m',
-      'Dense evergreen forests with diverse wildlife',
-      'Ancient pilgrimage route with historical significance',
-      'Spectacular cloud formations and mist-covered valleys',
-      'Rich biodiversity - home to exotic birds and butterflies'
-    ],
-    difficulty: 'Moderate to Challenging',
-    duration: '2 Days / 1 Night',
-    bestSeason: 'October to February'
-  },
-  {
-    id: 2,
-    destination: 'Kumara Parvatha',
-    image: kumaraParvatha,
-    specialty: 'Karnataka\'s 2nd Highest Peak',
-    description: 'Challenge yourself with one of the toughest treks',
-    enroute: ['Kukke Subramanya Temple', 'Pushpagiri Wildlife Sanctuary'],
-    highlights: [
-      'Standing tall at 1,712m above sea level',
-      'Thrilling steep climbs and rocky terrains',
-      'Panoramic views of Western Ghats mountain ranges',
-      'Trek through pristine Shola forests',
-      'Famous camping spot at Bhattara Mane',
-      'Early morning cloud sea phenomenon'
-    ],
-    difficulty: 'Challenging',
-    duration: '2 Days / 1 Night',
-    bestSeason: 'November to March'
-  },
-  {
-    id: 3,
-    destination: 'Kuduremukha',
-    image: kudureMukha,
-    specialty: 'Horse Face Mountain',
-    description: 'Trek to the iconic horse-shaped peak',
-    enroute: ['Kalasa Temple', 'Horanadu Annapoorneshwari Temple'],
-    highlights: [
-      'Unique horse face-shaped peak at 1,894m',
-      'Part of Kudremukh National Park',
-      'Rolling grasslands and scenic meadows',
-      'Crystal clear streams and waterfalls',
-      'Rich iron ore mountain ranges',
-      'Spot Malabar Giant Squirrels and Lion-tailed Macaques'
-    ],
-    difficulty: 'Moderate',
-    duration: '2 Days / 1 Night',
-    bestSeason: 'September to February'
-  },
-  {
-    id: 4,
-    destination: 'Ranijhari Falls',
-    image: ranijhari,
-    specialty: 'Hidden Waterfall Paradise',
-    description: 'Discover the secret cascade in deep forests',
-    enroute: ['Dharmasthala Temple', 'Charmadi Ghat Viewpoint'],
-    highlights: [
-      'Secluded waterfall surrounded by dense forest',
-      'Natural swimming pool at the base',
-      'Trek through coffee plantations and spice gardens',
-      'Relatively easier trek suitable for beginners',
-      'Perfect spot for nature photography',
-      'Refreshing forest bathing experience'
-    ],
-    difficulty: 'Easy to Moderate',
-    duration: '1 Day Trip',
-    bestSeason: 'October to March'
-  }
-];
-
 const AdventurePackages = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
   const navigate = useNavigate();
@@ -112,6 +34,84 @@ const AdventurePackages = () => {
       clearTimeout(timer);
     };
   }, [isInView]);
+
+  const packages = [
+    {
+      id: 1,
+      destination: 'Netravathi Peak',
+      image: netravathiPeak,
+      specialty: 'Sunset & Sunrise Views',
+      description: 'Experience breathtaking 360° views of Western Ghats',
+      enroute: ['Kukke Subramanya Temple', 'Somwarpet Forest'],
+      highlights: [
+        'Highest peak in Pushpagiri range at 1,800m',
+        'Dense evergreen forests with diverse wildlife',
+        'Ancient pilgrimage route with historical significance',
+        'Spectacular cloud formations and mist-covered valleys',
+        'Rich biodiversity - home to exotic birds and butterflies'
+      ],
+      difficulty: 'Moderate to Challenging',
+      duration: '2 Days / 1 Night',
+      bestSeason: 'October to February'
+    },
+    {
+      id: 2,
+      destination: 'Kumara Parvatha',
+      image: kumaraParvatha,
+      specialty: 'Karnataka\'s 2nd Highest Peak',
+      description: 'Challenge yourself with one of the toughest treks',
+      enroute: ['Kukke Subramanya Temple', 'Pushpagiri Wildlife Sanctuary'],
+      highlights: [
+        'Standing tall at 1,712m above sea level',
+        'Thrilling steep climbs and rocky terrains',
+        'Panoramic views of Western Ghats mountain ranges',
+        'Trek through pristine Shola forests',
+        'Famous camping spot at Bhattara Mane',
+        'Early morning cloud sea phenomenon'
+      ],
+      difficulty: 'Challenging',
+      duration: '2 Days / 1 Night',
+      bestSeason: 'November to March'
+    },
+    {
+      id: 3,
+      destination: 'Kuduremukha',
+      image: kudureMukha,
+      specialty: 'Horse Face Mountain',
+      description: 'Trek to the iconic horse-shaped peak',
+      enroute: ['Kalasa Temple', 'Horanadu Annapoorneshwari Temple'],
+      highlights: [
+        'Unique horse face-shaped peak at 1,894m',
+        'Part of Kudremukh National Park',
+        'Rolling grasslands and scenic meadows',
+        'Crystal clear streams and waterfalls',
+        'Rich iron ore mountain ranges',
+        'Spot Malabar Giant Squirrels and Lion-tailed Macaques'
+      ],
+      difficulty: 'Moderate',
+      duration: '2 Days / 1 Night',
+      bestSeason: 'September to February'
+    },
+    {
+      id: 4,
+      destination: 'Ranijhari Falls',
+      image: ranijhari,
+      specialty: 'Hidden Waterfall Paradise',
+      description: 'Discover the secret cascade in deep forests',
+      enroute: ['Dharmasthala Temple', 'Charmadi Ghat Viewpoint'],
+      highlights: [
+        'Secluded waterfall surrounded by dense forest',
+        'Natural swimming pool at the base',
+        'Trek through coffee plantations and spice gardens',
+        'Relatively easier trek suitable for beginners',
+        'Perfect spot for nature photography',
+        'Refreshing forest bathing experience'
+      ],
+      difficulty: 'Easy to Moderate',
+      duration: '1 Day Trip',
+      bestSeason: 'October to March'
+    }
+  ];
 
   const handleEnquire = (pkg) => {
     navigate(`/package/adventure/${pkg.id}`, { state: { package: pkg } });
@@ -188,7 +188,7 @@ const AdventurePackages = () => {
           overflow: 'hidden',
           paddingLeft: isMobile ? '15px' : '40px',
           paddingRight: isMobile ? '15px' : '40px',
-          maxWidth: '1450px', 
+          maxWidth: '1450px', 
           margin: '0 auto'
         }}
       >
@@ -343,6 +343,4 @@ const AdventurePackages = () => {
   );
 };
 
-
-export { packages };
 export default AdventurePackages;
