@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 how to build structure.txt
 
 ls -R > structure.txt or 
-tree -a -I 'node_modules|__pycache__|public|dist|build|.git' > structure.txt
+tree -a -I 'node_modules|__pycache__|dist|build|.git' > structure.txt
 
 npm run dev
 

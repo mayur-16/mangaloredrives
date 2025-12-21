@@ -1,4 +1,5 @@
 .
+├── .DS_Store
 ├── .gitignore
 ├── README.md
 ├── convert-to-webp.cjs
@@ -7,11 +8,12 @@
 ├── package.json
 ├── postcss.config.js
 ├── public
+│   ├── .htaccess
 │   ├── apple-touch-icon.png
 │   ├── favicon-96x96.png
 │   ├── favicon.ico
 │   ├── favicon.svg
-│   ├── index.html
+│   ├── logo.png
 │   ├── logo192.png
 │   ├── logo512.png
 │   ├── manifest.json
@@ -32,6 +34,7 @@
 │   │   │   └── mangalore_drives_logo_png.png
 │   │   ├── mantralaya.webp
 │   │   ├── netravathi-peak.webp
+│   │   ├── rani_jhari.webp
 │   │   ├── shabhari_malai_temple.webp
 │   │   ├── shirdi_temple.webp
 │   │   ├── thenomadway_logo.webp
@@ -42,7 +45,6 @@
 │   │   ├── Footer.jsx
 │   │   ├── Header.jsx
 │   │   ├── Hero.jsx
-│   │   ├── HeroImage.jsx
 │   │   ├── Rentals.jsx
 │   │   ├── SEOHead.jsx
 │   │   ├── TourPackages.jsx
@@ -59,6 +61,7 @@
 │   │   └── utils.js
 │   ├── main.jsx
 │   └── pages
+│       ├── NotFound.jsx
 │       └── PackageDetails.jsx
 ├── structure.txt
 ├── tailwind.config.js
@@ -66,4 +69,4 @@
 │   └── generate-sitemap.js
 └── vite.config.js
 
-11 directories, 56 files
+11 directories, 59 files
