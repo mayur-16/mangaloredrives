@@ -1,15 +1,282 @@
+// src/pages/PackageDetails.jsx - COMPLETE WORKING VERSION
 import React from 'react';
 import SEOHead from '@/components/SEOHead';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft, MessageCircle, Users, Mountain, Building2, Car, Shield, User, CheckCircle2, MapPin, Calendar, Clock } from 'lucide-react';
 
+// Import all package data
+import car5Seater from '@/assets/logos/5seatercar.webp';
+import car7Seater from '@/assets/logos/7seatercar.webp';
+import car8Seater from '@/assets/logos/8seatercar.webp';
+import busIcon from '@/assets/logos/bus.webp';
+import netravathiPeak from '@/assets/netravathi-peak.webp';
+import kumaraParvatha from '@/assets/kumara-parvatha.webp';
+import kudureMukha from '@/assets/kudure-mukha.webp';
+import ranijhari from '@/assets/Rani_jhari.webp';
+import tirupathiTemple from '@/assets/thirupathi_temple.webp';
+import mantralayaTemple from '@/assets/mantralaya.webp';
+import sabarimalaTemple from '@/assets/shabhari_malai_temple.webp';
+import shirdiTemple from '@/assets/shirdi_temple.webp';
+
+// Define all package data here
+const VEHICLES_DATA = {
+  1: {
+    id: 1,
+    name: '5 Seater Car',
+    passengers: 4,
+    icon: car5Seater,
+    specialty: 'Perfect for Families',
+    description: 'Comfortable sedan ideal for city tours and short trips',
+    features: [
+      'AC / Non Ac comfort with professional driver',
+      'Spacious luggage compartment',
+      'Fuel-efficient for long drives',
+      'Ideal for airport transfers'
+    ],
+    suitableFor: ['Airport Transfers', 'City Tours', 'Family Outings'],
+    availability: '24/7 Available'
+  },
+  2: {
+    id: 2,
+    name: '7 Seater Car',
+    passengers: 6,
+    icon: car7Seater,
+    specialty: 'Premium SUV Experience',
+    description: 'Spacious SUV perfect for group travel and outstation tours',
+    features: [
+      'Premium AC SUV with expert driver',
+      'Extra luggage space',
+      'Comfortable for long journeys',
+      'Perfect for temple tours'
+    ],
+    suitableFor: ['Temple Tours', 'Outstation Trips', 'Group Travel'],
+    availability: '24/7 Available'
+  },
+  3: {
+    id: 3,
+    name: '8 Seater Car',
+    passengers: 7,
+    icon: car8Seater,
+    specialty: 'Comfortable Group Travel',
+    description: 'Premium comfort for larger groups and family gatherings',
+    features: [
+      'Luxury AC / Non Ac vehicle with skilled driver',
+      'Maximum comfort for 7 passengers',
+      'Ample storage for group luggage',
+      'Ideal for wedding events'
+    ],
+    suitableFor: ['Wedding Transfers', 'Large Groups', 'Corporate Events'],
+    availability: '24/7 Available'
+  },
+  4: {
+    id: 4,
+    name: 'Mini Bus',
+    passengers: 15,
+    icon: busIcon,
+    specialty: 'Budget-Friendly for Large Groups',
+    description: 'Perfect for long trip with friends, school trips, and large gatherings',
+    features: [
+      'AC / Non Ac mini bus with experienced driver',
+      'Seating for up to 15 passengers',
+      'Cost-effective group transport',
+      'Suitable for multi-day tours'
+    ],
+    suitableFor: ['Corporate Events', 'School Trips', 'Pilgrimages', 'Long tours'],
+    availability: 'Advance Booking Required'
+  }
+};
+
+const ADVENTURE_DATA = {
+  1: {
+    id: 1,
+    destination: 'Netravathi Peak',
+    image: netravathiPeak,
+    specialty: 'Sunset & Sunrise Views',
+    description: 'Experience breathtaking 360° views of Western Ghats',
+    enroute: ['Kukke Subramanya Temple', 'Somwarpet Forest'],
+    highlights: [
+      'Highest peak in Pushpagiri range at 1,800m',
+      'Dense evergreen forests with diverse wildlife',
+      'Ancient pilgrimage route with historical significance',
+      'Spectacular cloud formations and mist-covered valleys',
+      'Rich biodiversity - home to exotic birds and butterflies'
+    ],
+    difficulty: 'Moderate to Challenging',
+    duration: '2 Days / 1 Night',
+    bestSeason: 'October to February'
+  },
+  2: {
+    id: 2,
+    destination: 'Kumara Parvatha',
+    image: kumaraParvatha,
+    specialty: 'Karnataka\'s 2nd Highest Peak',
+    description: 'Challenge yourself with one of the toughest treks',
+    enroute: ['Kukke Subramanya Temple', 'Pushpagiri Wildlife Sanctuary'],
+    highlights: [
+      'Standing tall at 1,712m above sea level',
+      'Thrilling steep climbs and rocky terrains',
+      'Panoramic views of Western Ghats mountain ranges',
+      'Trek through pristine Shola forests',
+      'Famous camping spot at Bhattara Mane',
+      'Early morning cloud sea phenomenon'
+    ],
+    difficulty: 'Challenging',
+    duration: '2 Days / 1 Night',
+    bestSeason: 'November to March'
+  },
+  3: {
+    id: 3,
+    destination: 'Kuduremukha',
+    image: kudureMukha,
+    specialty: 'Horse Face Mountain',
+    description: 'Trek to the iconic horse-shaped peak',
+    enroute: ['Kalasa Temple', 'Horanadu Annapoorneshwari Temple'],
+    highlights: [
+      'Unique horse face-shaped peak at 1,894m',
+      'Part of Kudremukh National Park',
+      'Rolling grasslands and scenic meadows',
+      'Crystal clear streams and waterfalls',
+      'Rich iron ore mountain ranges',
+      'Spot Malabar Giant Squirrels and Lion-tailed Macaques'
+    ],
+    difficulty: 'Moderate',
+    duration: '2 Days / 1 Night',
+    bestSeason: 'September to February'
+  },
+  4: {
+    id: 4,
+    destination: 'Ranijhari Falls',
+    image: ranijhari,
+    specialty: 'Hidden Waterfall Paradise',
+    description: 'Discover the secret cascade in deep forests',
+    enroute: ['Dharmasthala Temple', 'Charmadi Ghat Viewpoint'],
+    highlights: [
+      'Secluded waterfall surrounded by dense forest',
+      'Natural swimming pool at the base',
+      'Trek through coffee plantations and spice gardens',
+      'Relatively easier trek suitable for beginners',
+      'Perfect spot for nature photography',
+      'Refreshing forest bathing experience'
+    ],
+    difficulty: 'Easy to Moderate',
+    duration: '1 Day Trip',
+    bestSeason: 'October to March'
+  }
+};
+
+const TOUR_DATA = {
+  1: {
+    id: 1,
+    destination: 'Tirupati Balaji Temple',
+    image: tirupathiTemple,
+    deity: 'Lord Venkateswara',
+    significance: 'Most visited pilgrimage site in the world',
+    description: 'Seek blessings at the abode of Lord Venkateswara in the sacred Tirumala hills',
+    enroute: ['Kanipakam Vinayaka Temple', 'Sri Kalahasti Temple'],
+    highlights: [
+      'Darshan of Lord Venkateswara at the sanctum sanctorum',
+      'Visit to the seven sacred hills of Tirumala',
+      'Participate in temple rituals and ceremonies',
+      'Experience the divine atmosphere of Tirumala',
+      'Explore ancient temple architecture and history',
+      'Receive the sacred Tirupati Laddu Prasadam'
+    ],
+    features: ['Comfortable AC accommodation', 'Traditional vegetarian meals', 'Temple darshan arrangements', 'Professional guide assistance'],
+    duration: '2 Days / 1 Night',
+    bestSeason: 'September to March'
+  },
+  2: {
+    id: 2,
+    destination: 'Mantralayam',
+    image: mantralayaTemple,
+    deity: 'Sri Raghavendra Swamy',
+    significance: 'Holy Brindavanam of Sri Raghavendra Swamy',
+    description: 'Experience divine grace at the sacred Samadhi of Sri Raghavendra Swamy',
+    enroute: ['Alampur Jogulamba Temple', 'Tungabhadra River Ghats'],
+    highlights: [
+      'Darshan at the sacred Brindavanam of Sri Raghavendra',
+      'Attend daily Puja and Abhishekam ceremonies',
+      'Visit Panchamukhi Anjaneya Temple',
+      'Take holy dip in Tungabhadra River',
+      'Explore the meditation caves and sacred places',
+      'Receive blessed Prasadam and holy offerings'
+    ],
+    features: ['Dharamshala accommodation', 'Satvik meals provided', 'Morning & evening darshan', 'Spiritual discourse arrangements'],
+    duration: '2 Days / 1 Night',
+    bestSeason: 'October to February'
+  },
+  3: {
+    id: 3,
+    destination: 'Sabarimala Temple',
+    image: sabarimalaTemple,
+    deity: 'Lord Ayyappa',
+    significance: 'Sacred hilltop shrine of Lord Ayyappa',
+    description: 'Embark on a spiritual journey to the divine abode of Lord Ayyappa',
+    enroute: ['Pamba River', 'Sannidhanam Forest Path'],
+    highlights: [
+      'Trek through sacred forest path to Sannidhanam',
+      'Darshan of Lord Ayyappa at the main shrine',
+      'Visit Makaravilakku viewing point',
+      'Holy bath at Pamba River',
+      'Experience the unique Ayyappa devotional tradition',
+      'Witness the sacred 18 holy steps ascent'
+    ],
+    features: ['Basic accommodation facilities', 'Simple vegetarian meals', 'Guided trekking support', 'Vratham observance assistance'],
+    duration: '2 Days / 1 Night',
+    bestSeason: 'November to January'
+  },
+  4: {
+    id: 4,
+    destination: 'Shirdi Sai Baba Temple',
+    image: shirdiTemple,
+    deity: 'Sai Baba of Shirdi',
+    significance: 'Sacred Samadhi Mandir of Sai Baba',
+    description: 'Experience the eternal love and blessings of Sai Baba at his holy abode',
+    enroute: ['Shani Shingnapur', 'Trimbakeshwar Temple'],
+    highlights: [
+      'Darshan at the sacred Samadhi Mandir',
+      'Visit Dwarkamai and Chavadi',
+      'Attend the divine Aarti ceremonies',
+      'Experience Sai Baba\'s Kakad and Shej Aarti',
+      'Explore Lendi Garden and other sacred sites',
+      'Receive Udi and blessed Prasadam'
+    ],
+    features: ['Comfortable lodging near temple', 'Meal arrangements included', 'Priority darshan booking', 'Complete temple tour guidance'],
+    duration: '2 Days / 1 Night',
+    bestSeason: 'October to March'
+  }
+};
+
 const PackageDetails = () => {
   const { type, id } = useParams();
   const [isMobile, setIsMobile] = React.useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const data = location.state?.package || location.state?.vehicle;
+  
+  // Get data from location.state OR fallback to static data
+  const getPackageData = () => {
+    // Try to get from navigation state first
+    const stateData = location.state?.package || location.state?.vehicle;
+    if (stateData) return stateData;
+
+    // Fallback to static data based on type and id
+    const numId = parseInt(id);
+    if (type === 'rental') return VEHICLES_DATA[numId];
+    if (type === 'adventure') return ADVENTURE_DATA[numId];
+    if (type === 'tour') return TOUR_DATA[numId];
+    
+    return null;
+  };
+
+  const data = getPackageData();
+
+  // Redirect to 404 if package doesn't exist
+  React.useEffect(() => {
+    if (!data) {
+      navigate('/not-found', { replace: true });
+    }
+  }, [data, navigate]);
 
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -18,6 +285,8 @@ const PackageDetails = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Don't render anything if no data (will redirect)
+  if (!data) return null;
 
   const handleWhatsAppEnquiry = () => {
     let message = '';
@@ -50,13 +319,6 @@ const PackageDetails = () => {
     { icon: Shield, text: 'First Aid & Safety Equipment' },
     { icon: CheckCircle2, text: 'All Forest Permissions' },
     { icon: CheckCircle2, text: 'Accommodation Facilities' },
-  ];
-
-  const tourFacilities = [
-    { icon: CheckCircle2, text: 'Temple Darshan Arrangements' },
-    { icon: User, text: 'Experienced Guide Support' },
-    { icon: CheckCircle2, text: 'Comfortable Accommodation' },
-    { icon: CheckCircle2, text: 'Traditional Vegetarian Meals' },
   ];
 
   const getPageSEO = () => {
@@ -179,7 +441,11 @@ const PackageDetails = () => {
               <div style={{
                 height: isMobile ? '30vh' : '40vh',
                 overflow: 'hidden',
-                position: 'relative'
+                position: 'relative',
+                backgroundColor: '#f8fafc',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}>
                 <motion.img
                   animate={{
@@ -194,12 +460,11 @@ const PackageDetails = () => {
                   src={data.icon}
                   loading="eager"
                   style={{
-                    width: '100%',
-                    height: '100%',
+                    width: '80%',
+                    height: '80%',
                     objectFit: 'contain',
                   }}
                 />
-
               </div>
             )}
 
@@ -287,7 +552,7 @@ const PackageDetails = () => {
                 </div>
               )}
 
-              {type === 'adventure' && data?.duration && (
+              {(type === 'adventure' || type === 'tour') && data?.duration && (
                 <div style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -313,51 +578,13 @@ const PackageDetails = () => {
                     alignItems: 'center',
                     gap: '12px',
                     padding: isMobile ? '13px' : '15px',
-                    backgroundColor: '#dcfce7',
+                    backgroundColor: type === 'adventure' ? '#dcfce7' : '#fef9c3',
                     borderRadius: '12px'
                   }}>
-                    <Calendar size={isMobile ? 20 : 24} color="#166534" />
+                    <Calendar size={isMobile ? 20 : 24} color={type === 'adventure' ? '#166534' : '#d97706'} />
                     <div>
-                      <p style={{ fontSize: '12px', color: '#15803d', marginBottom: '2px' }}>Best Season</p>
-                      <p style={{ fontSize: '16px', fontWeight: '600', color: '#166534' }}>{data.bestSeason}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {type === 'tour' && data?.duration && (
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                  gap: '15px',
-                  marginBottom: isMobile ? '25px' : '30px'
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    padding: isMobile ? '13px' : '15px',
-                    backgroundColor: '#fef3c7',
-                    borderRadius: '12px'
-                  }}>
-                    <Clock size={isMobile ? 20 : 24} color="#92400e" />
-                    <div>
-                      <p style={{ fontSize: '12px', color: '#78350f', marginBottom: '2px' }}>Duration</p>
-                      <p style={{ fontSize: '16px', fontWeight: '600', color: '#92400e' }}>{data.duration}</p>
-                    </div>
-                  </div>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    padding: isMobile ? '13px' : '15px',
-                    backgroundColor: '#fef9c3',
-                    borderRadius: '12px'
-                  }}>
-                    <Calendar size={isMobile ? 20 : 24} color="#d97706" />
-                    <div>
-                      <p style={{ fontSize: '12px', color: '#92400e', marginBottom: '2px' }}>Best Season</p>
-                      <p style={{ fontSize: '16px', fontWeight: '600', color: '#d97706' }}>{data.bestSeason}</p>
+                      <p style={{ fontSize: '12px', color: type === 'adventure' ? '#15803d' : '#92400e', marginBottom: '2px' }}>Best Season</p>
+                      <p style={{ fontSize: '16px', fontWeight: '600', color: type === 'adventure' ? '#166534' : '#d97706' }}>{data.bestSeason}</p>
                     </div>
                   </div>
                 </div>
